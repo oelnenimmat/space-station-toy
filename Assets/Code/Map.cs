@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+using System.Threading;
+
 [System.Serializable]
 public struct Module
 {
@@ -90,6 +92,12 @@ public class Map : MonoBehaviour
 
     public bool doWaveFunctionCollapse;
 
+    private bool threadRunning;
+    private object lockObject;
+
+    private List<int>[,,] superPositionsForThread;
+    private List<SpawnInfo> spawnListFromThread;
+
     private void Awake()
     {
         mapCells = new GameObject[size.x, size.y, size.z];
@@ -97,22 +105,102 @@ public class Map : MonoBehaviour
 
         modules = collection.modules;
         emptyModuleIndex = collection.emptyModuleIndex;
+
+        lockObject = new object();
     }
 
-    private void Start ()
+    private void Start()
     {
         mapCellParent = new GameObject("mapCellParent").transform;
         mapCellParent.SetParent(transform);
         mapCellParent.localPosition = Vector3.zero;
 
-        Add(startCoord);
+        children = new GameObject("children").transform;
+        Add(startCoord, Vector3Int.forward);
     }
 
-    private void WaveFunctionCollapse()
+    // Here we only check if thread is done
+    private void Update()
     {
+        List<SpawnInfo> spawnList = null;
 
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+        lock(lockObject)
+        {
+            spawnList           = spawnListFromThread;
+            spawnListFromThread = null;
+        }
 
+        if (spawnList != null)
+        {
+            Debug.Log("Instantiate visuals");
+            InstantiateVisuals(spawnList);
+        }
+    }
+
+
+    private void ThreadOperation(List<int>[,,] superPositions)
+    {
+        var spawnList = WaveFunctionCollapse(superPositions);
+
+        lock(lockObject)
+        {
+            spawnListFromThread = spawnList;
+
+            superPositions = superPositionsForThread;
+            superPositionsForThread = null;
+        }
+
+        if (superPositions != null)
+        {
+            ThreadOperation(superPositions);
+        }
+        else
+        {
+            threadRunning = false;
+        }
+    }
+
+    private void ThreadStarter()
+    {
+        List<int>[,,] superPositions = null;
+
+        lock(lockObject)
+        {
+            threadRunning           = true;
+
+            superPositions          = superPositionsForThread;
+            superPositionsForThread = null;
+        }
+
+        if (superPositions != null)
+        {
+            ThreadOperation(superPositions);
+        }
+    }
+
+    private void StartWaveFunctionCollapseInThread()
+    {
+        // Note(Leo): We happily overwrite any previous state, since it is
+        // already expired if we are here making changes
+        var superPositions = BuildSuperPositions();
+
+        bool startThread;
+
+        lock(lockObject)
+        {
+            superPositionsForThread = superPositions;
+            startThread             = threadRunning == false;
+        }
+
+        if (startThread)
+        {
+            Debug.Log("Thread started");
+            new Thread(ThreadStarter).Start();
+        }
+    }
+
+    private List<int>[,,] BuildSuperPositions()
+    {
         // Initialize superpositions
         List<int>[,,]superPositions = new List<int>[size.x, size.y, size.z];
         for (int z = 0; z < size.z; ++z)
@@ -201,6 +289,13 @@ public class Map : MonoBehaviour
                 }
             }
         }
+
+        return superPositions;
+    }
+
+    private List<SpawnInfo> WaveFunctionCollapse(List<int>[,,] superPositions)
+    {
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
         bool IsFullyCollapsed()
         {
@@ -444,9 +539,8 @@ public class Map : MonoBehaviour
             {
                 for (int x = 0; x < size.x; ++x)
                 {
-                    Module m = modules[superPositions[x,y,z][0]];
-
-                    if (m.prefab != null)
+                    // if (modules[superPositions[x,y,z][0]].prefab != null)
+                    if (superPositions[x,y,z][0] != emptyModuleIndex)
                     {
                         spawnList.Add(new SpawnInfo(new Vector3Int(x,y,z), superPositions[x,y,z][0]));
                     }
@@ -454,13 +548,14 @@ public class Map : MonoBehaviour
             }
         }
 
-        InstantiateVisuals(spawnList);
 
         Debug.Log($"get neighbours took {getPossibleNeighboursSw.ElapsedMilliseconds / 1000f} s");
         Debug.Log($"Wave Function Collapse took {stopwatch.ElapsedMilliseconds / 1000f} s");
+
+        return spawnList;
     }
 
-    public bool Add(Vector3Int coords)
+    public bool Add(Vector3Int coords, Vector3Int forward)
     {       
         bool insideSize = coords.x >= 0 && coords.x < size.x 
                             && coords.y >= 0 && coords.y < size.y
@@ -493,37 +588,49 @@ public class Map : MonoBehaviour
         mapCells[coords.x, coords.y, coords.z] = mapCell;            
         activeCellCount += 1;
 
-        if (doWaveFunctionCollapse)
-        {
-            WaveFunctionCollapse();
-        }
+
+        // Todo(Leo): Now we instantiate children transform in two places, which is not good
+        Assert.AreNotEqual(children, null);
+
+        // Note(Leo): Instantiate temporary visual, so we get immediate feedback
+        // even though it is not accurate, and will change in a moment
+        // Todo(Leo): use "forward" to rotate this nicely
+        GameObject g = Instantiate(modules[1].prefab, children);
+        g.transform.position = coords;
+        visuals[coords.x, coords.y, coords.z] = g;
+
+        // -----------------------------------------
+
+        StartWaveFunctionCollapseInThread();
+
+        // -----------------------------------------
 
         return true;
     }
 
     public bool Destroy(Vector3Int coords)
     {
-        if (activeCellCount > 1)
-        {
-            Destroy(mapCells[coords.x, coords.y, coords.z]);
-            Destroy(visuals[coords.x, coords.y, coords.z]);
-
-            mapCells[coords.x, coords.y, coords.z] = null;
-            visuals[coords.x, coords.y, coords.z] = null;
-
-            activeCellCount -= 1;
-
-            if (doWaveFunctionCollapse)
-            {
-                WaveFunctionCollapse();
-            }
-
-            return true;
-        }
-        else
+        if (activeCellCount <= 1)
         {
             return false;
         }
+
+        // Remove map cell
+        Destroy(mapCells[coords.x, coords.y, coords.z]);
+        mapCells[coords.x, coords.y, coords.z] = null;
+
+        // Remove visual also here, even though we delete all after wfc to get immediate feedback to player
+        Destroy(visuals[coords.x, coords.y, coords.z]);
+        visuals[coords.x, coords.y, coords.z] = null;
+
+        activeCellCount -= 1;
+
+        // -----------------------------------------
+
+        StartWaveFunctionCollapseInThread();
+
+        // -----------------------------------------
+        return true;
     }
 
     private void InstantiateVisuals(List<SpawnInfo> spawnList)
@@ -534,9 +641,17 @@ public class Map : MonoBehaviour
             Destroy(children.gameObject);
         }
         children = new GameObject("children").transform;
+        visuals = new GameObject[size.x, size.y, size.z];
 
         foreach(SpawnInfo s in spawnList)
         {
+            GameObject prefab = modules[s.moduleIndex].prefab;
+            if (prefab == null)
+            {
+                Debug.Log("SHOULD NOT SEE THIS");
+                continue;
+            }
+
             GameObject g = Instantiate(modules[s.moduleIndex].prefab, children);
             g.transform.position = s.coords;
             visuals[s.coords.x, s.coords.y, s.coords.z] = g;

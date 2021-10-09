@@ -686,11 +686,7 @@ MonoBehaviour:
   activeCellCount: 0
   size: {x: 11, y: 11, z: 11}
   startCoord: {x: 5, y: 5, z: 5}
-  doWaveFunctionCollapse: 1
-  breakOn1: 0
-  breakOn2: 0
-  breakOn3: 0
-  USE_INDEX_SUPERPOSITIONS: 1
+  doWaveFunctionCollapse: 0
 --- !u!4 &1362841726
 Transform:
   m_ObjectHideFlags: 0

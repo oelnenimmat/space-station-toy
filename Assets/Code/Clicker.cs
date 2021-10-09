@@ -37,14 +37,11 @@ public class Clicker : MonoBehaviour
     void Update()
     {
         {
-            float cameraDistance = -camera.transform.localPosition.z;
-
-            float distanceInput = Input.mouseScrollDelta.y;
-
-            cameraDistance += distanceInput * scrollSpeed;
-            cameraDistance = Mathf.Clamp(cameraDistance, cameraMinDistance, cameraMaxDistance);
-
-            camera.transform.localPosition = new Vector3(0, 0, -cameraDistance);
+            float cameraDistance            = -camera.transform.localPosition.z;
+            float distanceInput             = Input.mouseScrollDelta.y;
+            cameraDistance                  += distanceInput * scrollSpeed;
+            cameraDistance                  = Mathf.Clamp(cameraDistance, cameraMinDistance, cameraMaxDistance);
+            camera.transform.localPosition  = new Vector3(0, 0, -cameraDistance);
         }
 
         bool selected = false;
@@ -95,7 +92,7 @@ public class Clicker : MonoBehaviour
 
                 Assert.AreEqual(direction.magnitude, 1);
 
-                if (map.Add(selectedCoords + direction))
+                if (map.Add(selectedCoords + direction, direction))
                 {
                     soundEffects.Play(SoundEffect.Add);
                 }
