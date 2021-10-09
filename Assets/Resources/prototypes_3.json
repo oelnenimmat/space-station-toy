@@ -1,0 +1,3619 @@
+{
+//     "prototypes": [
+//         {
+//             "name": "proto_0_0",
+//             "prefabName": "proto_0_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_1",
+//             "prefabName": "proto_0_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_2",
+//             "prefabName": "proto_0_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_3",
+//             "prefabName": "proto_0_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_4",
+//             "prefabName": "proto_0_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_5",
+//             "prefabName": "proto_0_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_6",
+//             "prefabName": "proto_0_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_7",
+//             "prefabName": "proto_0_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_8",
+//             "prefabName": "proto_0_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_9",
+//             "prefabName": "proto_0_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_10",
+//             "prefabName": "proto_0_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_11",
+//             "prefabName": "proto_0_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_12",
+//             "prefabName": "proto_0_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_13",
+//             "prefabName": "proto_0_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_14",
+//             "prefabName": "proto_0_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_15",
+//             "prefabName": "proto_0_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_16",
+//             "prefabName": "proto_0_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_17",
+//             "prefabName": "proto_0_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_18",
+//             "prefabName": "proto_0_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_19",
+//             "prefabName": "proto_0_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_20",
+//             "prefabName": "proto_0_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_21",
+//             "prefabName": "proto_0_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_22",
+//             "prefabName": "proto_0_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_0_23",
+//             "prefabName": "proto_0_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_0",
+//             "prefabName": "proto_1_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_1",
+//             "prefabName": "proto_1_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_2",
+//             "prefabName": "proto_1_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_3",
+//             "prefabName": "proto_1_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_4",
+//             "prefabName": "proto_1_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_5",
+//             "prefabName": "proto_1_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_6",
+//             "prefabName": "proto_1_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_7",
+//             "prefabName": "proto_1_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_8",
+//             "prefabName": "proto_1_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_9",
+//             "prefabName": "proto_1_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_1_10",
+//             "prefabName": "proto_1_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_11",
+//             "prefabName": "proto_1_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_12",
+//             "prefabName": "proto_1_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_13",
+//             "prefabName": "proto_1_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_14",
+//             "prefabName": "proto_1_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_15",
+//             "prefabName": "proto_1_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_1_16",
+//             "prefabName": "proto_1_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_17",
+//             "prefabName": "proto_1_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_18",
+//             "prefabName": "proto_1_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_19",
+//             "prefabName": "proto_1_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_1_20",
+//             "prefabName": "proto_1_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_21",
+//             "prefabName": "proto_1_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_22",
+//             "prefabName": "proto_1_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_1_23",
+//             "prefabName": "proto_1_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_0",
+//             "prefabName": "proto_2_corner_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_1",
+//             "prefabName": "proto_2_corner_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_2",
+//             "prefabName": "proto_2_corner_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_3",
+//             "prefabName": "proto_2_corner_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_4",
+//             "prefabName": "proto_2_corner_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_5",
+//             "prefabName": "proto_2_corner_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_6",
+//             "prefabName": "proto_2_corner_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_7",
+//             "prefabName": "proto_2_corner_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_8",
+//             "prefabName": "proto_2_corner_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_9",
+//             "prefabName": "proto_2_corner_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_10",
+//             "prefabName": "proto_2_corner_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_11",
+//             "prefabName": "proto_2_corner_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_12",
+//             "prefabName": "proto_2_corner_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_13",
+//             "prefabName": "proto_2_corner_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_14",
+//             "prefabName": "proto_2_corner_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_15",
+//             "prefabName": "proto_2_corner_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_16",
+//             "prefabName": "proto_2_corner_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_17",
+//             "prefabName": "proto_2_corner_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_18",
+//             "prefabName": "proto_2_corner_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_19",
+//             "prefabName": "proto_2_corner_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_20",
+//             "prefabName": "proto_2_corner_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_corner_21",
+//             "prefabName": "proto_2_corner_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_22",
+//             "prefabName": "proto_2_corner_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_corner_23",
+//             "prefabName": "proto_2_corner_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_0",
+//             "prefabName": "proto_2_opposites_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_1",
+//             "prefabName": "proto_2_opposites_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_2",
+//             "prefabName": "proto_2_opposites_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_3",
+//             "prefabName": "proto_2_opposites_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_4",
+//             "prefabName": "proto_2_opposites_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_5",
+//             "prefabName": "proto_2_opposites_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_6",
+//             "prefabName": "proto_2_opposites_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_7",
+//             "prefabName": "proto_2_opposites_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_8",
+//             "prefabName": "proto_2_opposites_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_9",
+//             "prefabName": "proto_2_opposites_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_10",
+//             "prefabName": "proto_2_opposites_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_11",
+//             "prefabName": "proto_2_opposites_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_12",
+//             "prefabName": "proto_2_opposites_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_13",
+//             "prefabName": "proto_2_opposites_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_14",
+//             "prefabName": "proto_2_opposites_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_15",
+//             "prefabName": "proto_2_opposites_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_16",
+//             "prefabName": "proto_2_opposites_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_17",
+//             "prefabName": "proto_2_opposites_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_18",
+//             "prefabName": "proto_2_opposites_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_19",
+//             "prefabName": "proto_2_opposites_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_20",
+//             "prefabName": "proto_2_opposites_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_21",
+//             "prefabName": "proto_2_opposites_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_2_opposites_22",
+//             "prefabName": "proto_2_opposites_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_2_opposites_23",
+//             "prefabName": "proto_2_opposites_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_0",
+//             "prefabName": "proto_3_corner_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_1",
+//             "prefabName": "proto_3_corner_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_2",
+//             "prefabName": "proto_3_corner_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_3",
+//             "prefabName": "proto_3_corner_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_4",
+//             "prefabName": "proto_3_corner_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_5",
+//             "prefabName": "proto_3_corner_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_6",
+//             "prefabName": "proto_3_corner_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_7",
+//             "prefabName": "proto_3_corner_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_8",
+//             "prefabName": "proto_3_corner_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_9",
+//             "prefabName": "proto_3_corner_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_10",
+//             "prefabName": "proto_3_corner_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_11",
+//             "prefabName": "proto_3_corner_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_12",
+//             "prefabName": "proto_3_corner_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_13",
+//             "prefabName": "proto_3_corner_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_14",
+//             "prefabName": "proto_3_corner_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_15",
+//             "prefabName": "proto_3_corner_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_16",
+//             "prefabName": "proto_3_corner_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_17",
+//             "prefabName": "proto_3_corner_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_18",
+//             "prefabName": "proto_3_corner_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_19",
+//             "prefabName": "proto_3_corner_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_20",
+//             "prefabName": "proto_3_corner_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_corner_21",
+//             "prefabName": "proto_3_corner_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_22",
+//             "prefabName": "proto_3_corner_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_corner_23",
+//             "prefabName": "proto_3_corner_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_0",
+//             "prefabName": "proto_3_opposites_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_1",
+//             "prefabName": "proto_3_opposites_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_2",
+//             "prefabName": "proto_3_opposites_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_3",
+//             "prefabName": "proto_3_opposites_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_4",
+//             "prefabName": "proto_3_opposites_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_5",
+//             "prefabName": "proto_3_opposites_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_6",
+//             "prefabName": "proto_3_opposites_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_7",
+//             "prefabName": "proto_3_opposites_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_8",
+//             "prefabName": "proto_3_opposites_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_9",
+//             "prefabName": "proto_3_opposites_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_10",
+//             "prefabName": "proto_3_opposites_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_11",
+//             "prefabName": "proto_3_opposites_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_12",
+//             "prefabName": "proto_3_opposites_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_13",
+//             "prefabName": "proto_3_opposites_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_14",
+//             "prefabName": "proto_3_opposites_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_15",
+//             "prefabName": "proto_3_opposites_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_16",
+//             "prefabName": "proto_3_opposites_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_17",
+//             "prefabName": "proto_3_opposites_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_18",
+//             "prefabName": "proto_3_opposites_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_19",
+//             "prefabName": "proto_3_opposites_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_20",
+//             "prefabName": "proto_3_opposites_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_21",
+//             "prefabName": "proto_3_opposites_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_3_opposites_22",
+//             "prefabName": "proto_3_opposites_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_3_opposites_23",
+//             "prefabName": "proto_3_opposites_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_0",
+//             "prefabName": "proto_4_corner_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_1",
+//             "prefabName": "proto_4_corner_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_2",
+//             "prefabName": "proto_4_corner_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_3",
+//             "prefabName": "proto_4_corner_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_4",
+//             "prefabName": "proto_4_corner_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_5",
+//             "prefabName": "proto_4_corner_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_6",
+//             "prefabName": "proto_4_corner_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_7",
+//             "prefabName": "proto_4_corner_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_8",
+//             "prefabName": "proto_4_corner_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_9",
+//             "prefabName": "proto_4_corner_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_10",
+//             "prefabName": "proto_4_corner_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_11",
+//             "prefabName": "proto_4_corner_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_12",
+//             "prefabName": "proto_4_corner_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_13",
+//             "prefabName": "proto_4_corner_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_14",
+//             "prefabName": "proto_4_corner_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_15",
+//             "prefabName": "proto_4_corner_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_16",
+//             "prefabName": "proto_4_corner_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_17",
+//             "prefabName": "proto_4_corner_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_18",
+//             "prefabName": "proto_4_corner_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_19",
+//             "prefabName": "proto_4_corner_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_20",
+//             "prefabName": "proto_4_corner_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_21",
+//             "prefabName": "proto_4_corner_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_corner_22",
+//             "prefabName": "proto_4_corner_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_corner_23",
+//             "prefabName": "proto_4_corner_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_0",
+//             "prefabName": "proto_4_opposites_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_1",
+//             "prefabName": "proto_4_opposites_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_2",
+//             "prefabName": "proto_4_opposites_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_3",
+//             "prefabName": "proto_4_opposites_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_4",
+//             "prefabName": "proto_4_opposites_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_5",
+//             "prefabName": "proto_4_opposites_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_6",
+//             "prefabName": "proto_4_opposites_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_7",
+//             "prefabName": "proto_4_opposites_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_8",
+//             "prefabName": "proto_4_opposites_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_9",
+//             "prefabName": "proto_4_opposites_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_10",
+//             "prefabName": "proto_4_opposites_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_11",
+//             "prefabName": "proto_4_opposites_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_12",
+//             "prefabName": "proto_4_opposites_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_13",
+//             "prefabName": "proto_4_opposites_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_14",
+//             "prefabName": "proto_4_opposites_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_4_opposites_15",
+//             "prefabName": "proto_4_opposites_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_16",
+//             "prefabName": "proto_4_opposites_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_17",
+//             "prefabName": "proto_4_opposites_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_18",
+//             "prefabName": "proto_4_opposites_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_19",
+//             "prefabName": "proto_4_opposites_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_20",
+//             "prefabName": "proto_4_opposites_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_21",
+//             "prefabName": "proto_4_opposites_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_22",
+//             "prefabName": "proto_4_opposites_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_4_opposites_23",
+//             "prefabName": "proto_4_opposites_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_0",
+//             "prefabName": "proto_5_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_1",
+//             "prefabName": "proto_5_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_2",
+//             "prefabName": "proto_5_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_5_3",
+//             "prefabName": "proto_5_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_4",
+//             "prefabName": "proto_5_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_5",
+//             "prefabName": "proto_5_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_6",
+//             "prefabName": "proto_5_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_5_7",
+//             "prefabName": "proto_5_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_8",
+//             "prefabName": "proto_5_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_9",
+//             "prefabName": "proto_5_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_10",
+//             "prefabName": "proto_5_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_5_11",
+//             "prefabName": "proto_5_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_12",
+//             "prefabName": "proto_5_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "-1",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_13",
+//             "prefabName": "proto_5_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_14",
+//             "prefabName": "proto_5_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "-1"
+//         },
+//         {
+//             "name": "proto_5_15",
+//             "prefabName": "proto_5_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "-1",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_16",
+//             "prefabName": "proto_5_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_17",
+//             "prefabName": "proto_5_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_18",
+//             "prefabName": "proto_5_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_19",
+//             "prefabName": "proto_5_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "-1",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_20",
+//             "prefabName": "proto_5_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_21",
+//             "prefabName": "proto_5_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_22",
+//             "prefabName": "proto_5_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_5_23",
+//             "prefabName": "proto_5_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "-1",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_0",
+//             "prefabName": "proto_6_0",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_1",
+//             "prefabName": "proto_6_1",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_2",
+//             "prefabName": "proto_6_2",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_3",
+//             "prefabName": "proto_6_3",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_4",
+//             "prefabName": "proto_6_4",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_5",
+//             "prefabName": "proto_6_5",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_6",
+//             "prefabName": "proto_6_6",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_7",
+//             "prefabName": "proto_6_7",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_8",
+//             "prefabName": "proto_6_8",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_9",
+//             "prefabName": "proto_6_9",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_10",
+//             "prefabName": "proto_6_10",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_11",
+//             "prefabName": "proto_6_11",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_12",
+//             "prefabName": "proto_6_12",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_13",
+//             "prefabName": "proto_6_13",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_14",
+//             "prefabName": "proto_6_14",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_15",
+//             "prefabName": "proto_6_15",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_16",
+//             "prefabName": "proto_6_16",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_17",
+//             "prefabName": "proto_6_17",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_18",
+//             "prefabName": "proto_6_18",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_19",
+//             "prefabName": "proto_6_19",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_20",
+//             "prefabName": "proto_6_20",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_21",
+//             "prefabName": "proto_6_21",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_22",
+//             "prefabName": "proto_6_22",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "proto_6_23",
+//             "prefabName": "proto_6_23",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "0s",
+//             "posX": "0s",
+//             "negY": "0s",
+//             "posY": "0s",
+//             "negZ": "0s",
+//             "posZ": "0s"
+//         },
+//         {
+//             "name": "empty",
+//             "prefabName": "",
+//             "rotation": {
+//                 "x": 0,
+//                 "y": 0,
+//                 "z": 0
+//             },
+//             "negX": "-1f",
+//             "posX": "-1f",
+//             "negY": "-1f",
+//             "posY": "-1f",
+//             "negZ": "-1f",
+//             "posZ": "-1f"
+//         }
+//     ]
+// }

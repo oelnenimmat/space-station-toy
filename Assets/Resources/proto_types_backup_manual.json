@@ -1,0 +1,307 @@
+{
+    "protoTypes": [
+        {
+            "name": "none",
+            "prefabName": "proto_0",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "empty"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "x",
+            "prefabName": "proto_1",
+            "rotation": 1,
+            "compatibilityLeft": [
+                "X",
+                "xX",
+                "XZ",
+                "XY", "XYZ"
+            ],
+            "compatibilityRight": [
+                "empty"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "X",
+            "prefabName": "proto_1",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "x",
+                "xX"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "xX",
+            "prefabName": "proto_2_opposites",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "xX",
+                "X",
+                "XZ",
+                "XY",
+                "XYZ"
+            ],
+            "compatibilityRight": [
+                "xX",
+                "x"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "XZ",
+            "prefabName": "proto_2_corner",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "xX",
+                "x"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "z"
+            ]
+        },
+        {
+            "name": "z",
+            "prefabName": "proto_1",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "empty"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "XZ","Z", "XYZ"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "Z",
+            "prefabName": "proto_1",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "empty"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "z"
+            ]
+        },
+        {
+            "name": "XY",
+            "prefabName": "proto_2_corner",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "xX",
+                "x"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "y"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "y",
+            "prefabName": "proto_1",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "empty"
+            ],
+            "compatibilityDown": [
+                "XY", "Y", "XYZ"
+            ],
+            "compatibilityUp": [
+                "empty"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "Y",
+            "prefabName": "proto_1",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "empty"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "y"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "empty"
+            ]
+        },
+        {
+            "name": "XYZ",
+            "prefabName": "proto_3_corner",
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty"
+            ],
+            "compatibilityRight": [
+                "x", "xX"
+            ],
+            "compatibilityDown": [
+                "empty"
+            ],
+            "compatibilityUp": [
+                "y"
+            ],
+            "compatibilityBack": [
+                "empty"
+            ],
+            "compatibilityForward": [
+                "z"
+            ]
+        },
+        {
+            "name": "empty",
+            "prefabName": null,
+            "rotation": 0,
+            "compatibilityLeft": [
+                "empty",
+                "none",
+                "x", "z", "Z", "y", "Y"
+            ],
+            "compatibilityRight": [
+                "empty",
+                "none",
+                "X",
+                "z", "Z", "XZ", "y", "Y", "XY",
+                "XYZ"
+            ],
+            "compatibilityDown": [
+                "empty",
+                "none", "x", "X", "xX",
+                "z", "Z", "XZ", "y"
+            ],
+            "compatibilityUp": [
+                "empty",
+                "none", "x", "X", "xX",
+                "z", "Z", "XZ", "Y", "XY",
+                "XYZ"
+            ],
+            "compatibilityBack": [
+                "empty",
+                "none", "x", "X", "xX",
+                "z", "y", "Y", "XY"
+            ],
+            "compatibilityForward": [
+                "empty",
+                "none", "x", "X", "xX",
+                "Z", "XZ", "y", "Y", "XY",
+                "XYZ"
+            ]
+        }
+    ]
+}

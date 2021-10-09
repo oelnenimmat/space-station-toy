@@ -1,0 +1,5 @@
+sneak peak:
+	in sable, player should have been shown that bike riding is super awesome
+	e.g. by loaning someones fully upgraded bike
+
+	that way the player (not character) would have incentive to look out and find bike parts
