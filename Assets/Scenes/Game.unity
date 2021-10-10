@@ -339,6 +339,13 @@ MonoBehaviour:
   clickTimerDuration: 0.2
   soundEffects: {fileID: 910764852}
   map: {fileID: 1362841725}
+  undoStackSize: 100
+  undoRedo:
+    stack: []
+    capacity: 0
+    index: 0
+    current: 0
+    top: 0
 --- !u!4 &910764850
 Transform:
   m_ObjectHideFlags: 0

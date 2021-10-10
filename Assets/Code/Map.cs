@@ -116,7 +116,7 @@ public class Map : MonoBehaviour
         mapCellParent.localPosition = Vector3.zero;
 
         children = new GameObject("children").transform;
-        Add(startCoord, Vector3Int.forward);
+        Add(startCoord);
     }
 
     // Here we only check if thread is done
@@ -555,7 +555,7 @@ public class Map : MonoBehaviour
         return spawnList;
     }
 
-    public bool Add(Vector3Int coords, Vector3Int forward)
+    public bool Add(Vector3Int coords)
     {       
         bool insideSize = coords.x >= 0 && coords.x < size.x 
                             && coords.y >= 0 && coords.y < size.y
@@ -594,7 +594,6 @@ public class Map : MonoBehaviour
 
         // Note(Leo): Instantiate temporary visual, so we get immediate feedback
         // even though it is not accurate, and will change in a moment
-        // Todo(Leo): use "forward" to rotate this nicely
         GameObject g = Instantiate(modules[1].prefab, children);
         g.transform.position = coords;
         visuals[coords.x, coords.y, coords.z] = g;

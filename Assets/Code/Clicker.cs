@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+
 
 public class Clicker : MonoBehaviour
 {
@@ -29,9 +31,13 @@ public class Clicker : MonoBehaviour
     public SoundEffects soundEffects;
     public Map map;
 
+    public int undoStackSize;
+    public UndoRedo undoRedo;
+
     void Start()
     {
         transform.position = map.startCoord;
+        undoRedo = new UndoRedo(undoStackSize);
     }
 
     void Update()
@@ -92,9 +98,10 @@ public class Clicker : MonoBehaviour
 
                 Assert.AreEqual(direction.magnitude, 1);
 
-                if (map.Add(selectedCoords + direction, direction))
+                if (map.Add(selectedCoords + direction))
                 {
                     soundEffects.Play(SoundEffect.Add);
+                    undoRedo.Add(selectedCoords + direction, UndoRedoOperation.Add);
                 }
                 else
                 {
@@ -138,6 +145,7 @@ public class Clicker : MonoBehaviour
                 if (map.Destroy(selectedCoords))
                 {
                     soundEffects.Play(SoundEffect.Remove);
+                    undoRedo.Add(selectedCoords, UndoRedoOperation.Remove);
                 }
                 else
                 {
@@ -163,6 +171,60 @@ public class Clicker : MonoBehaviour
 
             transform.Translate(-xInput * moveSpeed * FlatOnXZPlane(transform.right), Space.World);
             transform.Translate(-yInput * moveSpeed * FlatOnXZPlane(transform.forward), Space.World);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (undoRedo.Undo(out UndoRedoItem item))
+            {
+                switch (item.operation)
+                {
+                    case UndoRedoOperation.Add:
+                        if (map.Destroy(item.cell))
+                        {
+                            soundEffects.Play(SoundEffect.Remove);
+                        }
+                        break;
+
+                    case UndoRedoOperation.Remove:
+                        if (map.Add(item.cell))
+                        {
+                            soundEffects.Play(SoundEffect.Add);
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                soundEffects.Play(SoundEffect.Error);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            if (undoRedo.Redo(out UndoRedoItem item))
+            {
+                switch(item.operation)
+                {
+                    case UndoRedoOperation.Add:
+                        if (map.Add(item.cell))
+                        {
+                            soundEffects.Play(SoundEffect.Add);
+                        }
+                        break;
+
+                    case UndoRedoOperation.Remove:
+                        if (map.Destroy(item.cell))
+                        {
+                            soundEffects.Play(SoundEffect.Remove);
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                soundEffects.Play(SoundEffect.Error);
+            }
         }
     }
 }
