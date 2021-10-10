@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 651e197942b601c429bcc36123907317, type: 2}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.32280797, g: 0.1123869, b: 0.3079967, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -340,12 +340,6 @@ MonoBehaviour:
   soundEffects: {fileID: 910764852}
   map: {fileID: 1362841725}
   undoStackSize: 100
-  undoRedo:
-    stack: []
-    capacity: 0
-    index: 0
-    current: 0
-    top: 0
 --- !u!4 &910764850
 Transform:
   m_ObjectHideFlags: 0
@@ -694,6 +688,8 @@ MonoBehaviour:
   size: {x: 11, y: 11, z: 11}
   startCoord: {x: 5, y: 5, z: 5}
   doWaveFunctionCollapse: 0
+  ambientOcclusionTexture: {fileID: 0}
+  modulesMaterial: {fileID: 2100000, guid: ed404b49ab42eaf4c87151179cc45d06, type: 2}
 --- !u!4 &1362841726
 Transform:
   m_ObjectHideFlags: 0

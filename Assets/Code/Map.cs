@@ -79,7 +79,6 @@ public class Map : MonoBehaviour
     public Module [] modules;
     public int emptyModuleIndex;
 
-
     public GameObject [,,] mapCells;
     public GameObject [,,] visuals;
     public int activeCellCount;
@@ -98,6 +97,9 @@ public class Map : MonoBehaviour
     private List<int>[,,] superPositionsForThread;
     private List<SpawnInfo> spawnListFromThread;
 
+    public Texture3D ambientOcclusionTexture;
+    public Material modulesMaterial;
+
     private void Awake()
     {
         mapCells = new GameObject[size.x, size.y, size.z];
@@ -107,6 +109,8 @@ public class Map : MonoBehaviour
         emptyModuleIndex = collection.emptyModuleIndex;
 
         lockObject = new object();
+
+        ambientOcclusionTexture = new Texture3D(size.x, size.y, size.z, TextureFormat.RGBA32, false);
     }
 
     private void Start()
@@ -297,6 +301,8 @@ public class Map : MonoBehaviour
     {
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
+        bool algorithmFailure = false;
+
         bool IsFullyCollapsed()
         {
             for(int z = 0; z < size.z; z++)
@@ -309,6 +315,8 @@ public class Map : MonoBehaviour
                         {
                             // Todo(Leo): we should really check this when removing possibilities superpositions
                             Debug.LogError("Superposition have collapsed too much, to zero!");
+                            algorithmFailure = true;
+                            return true;
                         }
 
                         if (superPositions[x,y,z].Count != 1)
@@ -351,6 +359,9 @@ public class Map : MonoBehaviour
                         if (entropy < 1)
                         {
                             Debug.LogError("Too little entropy!");
+                            algorithmFailure = true;
+
+                            return new Vector3Int(int.MinValue, int.MinValue, int.MinValue);
                         }
 
                         if (entropy > 1 && entropy < minEntropy)
@@ -518,6 +529,13 @@ public class Map : MonoBehaviour
         while(IsFullyCollapsed() == false && rounds > 0)
         {
             Vector3Int minEntropyCoords = GetMinEntropyCoords();
+
+            if (algorithmFailure)
+            {
+                break;
+            }
+
+
             CollapseAt(minEntropyCoords);
             Propagate(minEntropyCoords);
 
@@ -527,6 +545,12 @@ public class Map : MonoBehaviour
         if (rounds == 0)
         {
             Debug.LogWarning("Loop not working yet :)");
+            algorithmFailure = true;
+        }
+
+        if (algorithmFailure)
+        {
+             return null;
         }
 
         // Note(Leo): activeCellCount as allocation count is true only while empty cells
@@ -549,8 +573,8 @@ public class Map : MonoBehaviour
         }
 
 
-        Debug.Log($"get neighbours took {getPossibleNeighboursSw.ElapsedMilliseconds / 1000f} s");
-        Debug.Log($"Wave Function Collapse took {stopwatch.ElapsedMilliseconds / 1000f} s");
+        // Debug.Log($"get neighbours took {getPossibleNeighboursSw.ElapsedMilliseconds / 1000f} s");
+        // Debug.Log($"Wave Function Collapse took {stopwatch.ElapsedMilliseconds / 1000f} s");
 
         return spawnList;
     }
@@ -601,6 +625,7 @@ public class Map : MonoBehaviour
         // -----------------------------------------
 
         StartWaveFunctionCollapseInThread();
+        GenerateAmbientOcclusionTexture();
 
         // -----------------------------------------
 
@@ -627,6 +652,7 @@ public class Map : MonoBehaviour
         // -----------------------------------------
 
         StartWaveFunctionCollapseInThread();
+        GenerateAmbientOcclusionTexture();
 
         // -----------------------------------------
         return true;
@@ -655,5 +681,36 @@ public class Map : MonoBehaviour
             g.transform.position = s.coords;
             visuals[s.coords.x, s.coords.y, s.coords.z] = g;
         }   
+    }
+
+    void GenerateAmbientOcclusionTexture()
+    {
+        int length = size.x * size.y * size.z;
+        Color [] colors = new Color[length];
+        for (int z = 0; z < size.z; ++z)
+        {
+            for (int y = 0; y < size.y; ++y)
+            {
+                for (int x = 0; x < size.x; ++x)
+                {
+                    int index = x + size.x * y + size.x * size.y * z;
+
+                    if (mapCells[x,y,z] == null)
+                    {
+                        colors[index] = Color.white;
+                    }
+                    else
+                    {
+                        Debug.Log($"Added black to {x}, {y}, {z}");
+                        colors[index] = Color.black;
+                    }
+                }
+            }
+        }
+
+        ambientOcclusionTexture.SetPixels(colors);
+        ambientOcclusionTexture.Apply();
+
+        modulesMaterial.SetTexture("_AmbientOcclusion3D", ambientOcclusionTexture);
     }
 }
