@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapCube : MonoBehaviour
+public class MapCell : MonoBehaviour
 {
     public Vector3Int coords;
 

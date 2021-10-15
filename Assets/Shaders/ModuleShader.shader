@@ -4,6 +4,7 @@ Shader "Custom/ModuleShader"
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        _Normal ("Normal", 2D) = "bump" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 
@@ -75,10 +76,12 @@ Shader "Custom/ModuleShader"
         #pragma target 3.0
 
         sampler2D _MainTex;
+        sampler2D _Normal;
 
         struct Input
         {
             float2 uv_MainTex;
+            float2 uv_Normal;
             float3 worldPos;
         };
 
@@ -101,12 +104,17 @@ Shader "Custom/ModuleShader"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
+
+            o.Normal = UnpackNormal(tex2D(_Normal, IN.uv_Normal));
+
             // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            fixed4 colorTexture = tex2D(_MainTex, IN.uv_MainTex);
+            fixed4 c = colorTexture * _Color;
+            // c = Luminance(colorTexture).rrrr;
             o.Albedo = c.rgb;
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
+            o.Smoothness = Luminance(colorTexture) * _Glossiness;
             o.Alpha = c.a;
 
 

@@ -40,26 +40,6 @@ public struct Module
     }
 }
 
-public enum Direction { Left, Right, Down, Up, Back, Forward }
-
-public static class DirectionExtensions
-{
-    public static Vector3Int ToVector3Int(this Direction d)
-    {
-        switch(d)
-        {
-            case Direction.Left: return Vector3Int.left;
-            case Direction.Right: return Vector3Int.right;
-            case Direction.Down: return Vector3Int.down;
-            case Direction.Up: return Vector3Int.up;
-            case Direction.Back: return Vector3Int.back;
-            case Direction.Forward: return Vector3Int.forward;
-        }
-
-        Debug.LogError($"Invalid direction ({d}) is invalid!");
-        return Vector3Int.zero;
-    }
-}
 
 public struct SpawnInfo
 {
@@ -81,7 +61,10 @@ public class Map : MonoBehaviour
 
     public GameObject [,,] mapCells;
     public GameObject [,,] visuals;
+    public GameObject [,,] tempVisuals;
     public int activeCellCount;
+
+    public int tempVisualModuleIndex;
 
     public Vector3Int size;
     public Vector3Int startCoord;
@@ -104,6 +87,7 @@ public class Map : MonoBehaviour
     {
         mapCells = new GameObject[size.x, size.y, size.z];
         visuals = new GameObject[size.x, size.y, size.z];
+        tempVisuals = new GameObject[size.x, size.y, size.z];
 
         modules = collection.modules;
         emptyModuleIndex = collection.emptyModuleIndex;
@@ -319,7 +303,7 @@ public class Map : MonoBehaviour
                             return true;
                         }
 
-                        if (superPositions[x,y,z].Count != 1)
+                        if (superPositions[x,y,z].Count > 1)
                         {
                             return false;
                         }
@@ -344,6 +328,18 @@ public class Map : MonoBehaviour
             return true;
         }
 
+        // int GetTotalPriorityAt(Vector3Int coords)
+        // {
+        //     int priority = 0;
+
+        //     foreach(int moduleIndex in superPositions.Get(coords))
+        //     {
+        //         priority += modules[moduleIndex].priority;
+        //     }
+
+        //     return priority;
+        // }
+
         Vector3Int GetMinEntropyCoords()
         {
             Vector3Int minEntropyCoords = new Vector3Int(0,0,0);
@@ -358,16 +354,32 @@ public class Map : MonoBehaviour
                         int entropy = superPositions[x,y,z].Count;
                         if (entropy < 1)
                         {
-                            Debug.LogError("Too little entropy!");
+                            Debug.LogError($"Too little entropy at ({x}, {y}, {z})!");
                             algorithmFailure = true;
 
                             return new Vector3Int(int.MinValue, int.MinValue, int.MinValue);
                         }
 
-                        if (entropy > 1 && entropy < minEntropy)
+                        if (entropy > 1)
                         {
-                            minEntropy = entropy;
-                            minEntropyCoords = new Vector3Int(x,y,z);
+                            if (entropy < minEntropy)
+                            {
+                                minEntropy = entropy;
+                                minEntropyCoords = new Vector3Int(x,y,z);
+                            }
+                            // else if (entropy == minEntropy)
+                            // {
+                            //     int totalPriorityAtMin = GetTotalPriorityAt(minEntropyCoords);
+                            //     int totalPriorityAtCurrent = GetTotalPriorityAt(new Vector3Int(x,y,z));
+
+                            //     if (totalPriorityAtCurrent > totalPriorityAtMin)
+                            //     {
+                            //         minEntropy = entropy;
+                            //         minEntropyCoords = new Vector3Int(x,y,z);
+                            //     }
+                            // }
+
+                         // && entropy < minEntropy)
                         }
                     }
                 }
@@ -378,18 +390,35 @@ public class Map : MonoBehaviour
         void CollapseAt(Vector3Int coords)
         {
             // Basically, pick one with greatest priority
-            var sp = superPositions[coords.x, coords.y, coords.z];
+            // List<int> sp = superPositions[coords.x, coords.y, coords.z];
+            List<int> sp = superPositions.Get(coords);
 
-            int maxPriorityModuleIndex = 0;
+            int maxPriorityModuleIndex = -1;
+            int maxPriority = int.MinValue;
 
-            for(int i = 1; i < sp.Count; ++i)
+            for(int i = 0; i < sp.Count; ++i)
             {
-                if (modules[sp[i]].priority > modules[maxPriorityModuleIndex].priority)
+                int moduleIndex = sp[i];
+                int priority = modules[moduleIndex].priority;
+                if (priority >= maxPriority)
                 {
-                    maxPriorityModuleIndex = sp[i];
+                    maxPriorityModuleIndex = moduleIndex;
+                    maxPriority = priority;
                 }
+
+
+                // if (modules[sp[i]].priority >= maxPriority)
+                // {
+                //     ma
+                // }
+
+                // if (modules[sp[i]].priority > modules[maxPriorityModuleIndex].priority)
+                // {
+                //     maxPriorityModuleIndex = sp[i];
+                // }
             }
-            superPositions[coords.x, coords.y, coords.z] = new List<int>() {maxPriorityModuleIndex};
+            superPositions.Set(coords, new List<int>() {maxPriorityModuleIndex});
+            // superPositions[coords.x, coords.y, coords.z] = new List<int>() {maxPriorityModuleIndex};
         }
 
 
@@ -563,7 +592,6 @@ public class Map : MonoBehaviour
             {
                 for (int x = 0; x < size.x; ++x)
                 {
-                    // if (modules[superPositions[x,y,z][0]].prefab != null)
                     if (superPositions[x,y,z][0] != emptyModuleIndex)
                     {
                         spawnList.Add(new SpawnInfo(new Vector3Int(x,y,z), superPositions[x,y,z][0]));
@@ -602,7 +630,7 @@ public class Map : MonoBehaviour
         mapCell.transform.SetParent(mapCellParent);
         mapCell.transform.position = coords;
 
-        mapCell.AddComponent<MapCube>().coords = coords;
+        mapCell.AddComponent<MapCell>().coords = coords;
         mapCell.name = $"map cell {coords}";
 
         BoxCollider collider = mapCell.AddComponent<BoxCollider>();
@@ -618,9 +646,19 @@ public class Map : MonoBehaviour
 
         // Note(Leo): Instantiate temporary visual, so we get immediate feedback
         // even though it is not accurate, and will change in a moment
-        GameObject g = Instantiate(modules[1].prefab, children);
+        GameObject g = Instantiate(modules[tempVisualModuleIndex].prefab);
         g.transform.position = coords;
-        visuals[coords.x, coords.y, coords.z] = g;
+
+        GameObject previousTempVisual = tempVisuals.Get(coords);
+        if (previousTempVisual != null)
+        {
+            Debug.LogError($"Forgotten temp visual at {coords}!");
+            Destroy(previousTempVisual);
+
+            // no need to set to null, we se it anyway
+        }
+
+        tempVisuals.Set(coords, g);
 
         // -----------------------------------------
 
@@ -646,6 +684,19 @@ public class Map : MonoBehaviour
         // Remove visual also here, even though we delete all after wfc to get immediate feedback to player
         Destroy(visuals[coords.x, coords.y, coords.z]);
         visuals[coords.x, coords.y, coords.z] = null;
+
+        // Also destroy any tempvisual from this, they also aren't needed
+        GameObject tempVisual = tempVisuals.Get(coords);
+        if (tempVisual != null)
+        {
+            Debug.Log($"destroy temp visual before: {tempVisuals.Get(coords)}");
+
+            Destroy(tempVisual);
+            tempVisuals.Set(coords, null);
+
+            Debug.Log($"destroy temp visual after: {tempVisuals.Get(coords)}");
+
+        }
 
         activeCellCount -= 1;
 
@@ -673,13 +724,25 @@ public class Map : MonoBehaviour
             GameObject prefab = modules[s.moduleIndex].prefab;
             if (prefab == null)
             {
-                Debug.Log("SHOULD NOT SEE THIS");
+                Debug.Log($"SHOULD NOT SEE THIS, moduleIndex = {s.moduleIndex}");
                 continue;
             }
 
-            GameObject g = Instantiate(modules[s.moduleIndex].prefab, children);
-            g.transform.position = s.coords;
-            visuals[s.coords.x, s.coords.y, s.coords.z] = g;
+            // There may be immediate feedback module present, destroy it first
+            if (tempVisuals[s.coords.x, s.coords.y, s.coords.z] != null)
+            {
+                Destroy(tempVisuals[s.coords.x, s.coords.y, s.coords.z]);
+                tempVisuals.Set(s.coords, null);
+            }
+
+            // Note(Leo): map may have been updated again before this, so only instantiate, if there is 
+            // actually a map cell present here
+            if (mapCells[s.coords.x, s.coords.y, s.coords.z] != null)
+            {
+                GameObject g = Instantiate(modules[s.moduleIndex].prefab, children);
+                g.transform.position = s.coords;
+                visuals[s.coords.x, s.coords.y, s.coords.z] = g;
+            }
         }   
     }
 
@@ -712,5 +775,18 @@ public class Map : MonoBehaviour
         ambientOcclusionTexture.Apply();
 
         modulesMaterial.SetTexture("_AmbientOcclusion3D", ambientOcclusionTexture);
+    }
+}
+
+public static class MultiDimensionalArrayAccessExtensions
+{
+    public static T Get<T> (this T[,,] array, Vector3Int index)
+    {
+        return array[index.x, index.y, index.z];
+    }
+
+    public static void Set<T> (this T[,,] array, Vector3Int index, T value)
+    {
+        array[index.x, index.y, index.z] = value;
     }
 }

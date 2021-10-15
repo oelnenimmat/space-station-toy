@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 8k_stars_milky_way
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 63448d13b55d70d4183c20cc0107aba0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -21,9 +21,13 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: e92f8f782e2694c4784452752cf95d82, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 20, y: 20}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _DotOffset: 0.972
+    - _DotScale: 1
+    m_Colors:
+    - _BottomColor: {r: 0.17020772, g: 0.040583827, b: 0.4528302, a: 0}
+    - _TopColor: {r: 0.14537139, g: 0.038399998, b: 0.192, a: 0}
   m_BuildTextureStacks: []

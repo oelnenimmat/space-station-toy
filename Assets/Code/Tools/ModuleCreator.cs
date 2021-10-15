@@ -3,26 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+using System.Linq;
+
 [System.Serializable]
 public class ModulePrototype
 {
     public string name;
     public string prefabName;
     public int priority;
-    public int negX;
-    public int posX;
-    public int negY;
-    public int posY;
-    public int negZ;
-    public int posZ;
+
+    public int leftSocket;
+    public int rightSocket;
+    public int downSocket;
+    public int upSocket;
+    public int backSocket;
+    public int forwardSocket;
 }
 
 public enum ModuleRotations
 {
     None,
-    PositiveXToSixDirections,
-    PositiveZToSixDirections,
-    PositiveYToSixDirections,
+
+    XAxisToRightAngles,
+    YAxisToRightAngles,
+    ZAxisToRightAngles,
+    
+    XAxisToRightAnglesAndOpposites,
+    YAxisToRightAnglesAndOpposites,
+    ZAxisToRightAnglesAndOpposites,
+    
     All
 }
 
@@ -37,7 +46,38 @@ public static class ModuleRotationsExtensions
                 return new Quaternion[] {Quaternion.identity};
             }
 
-            case ModuleRotations.PositiveXToSixDirections:
+            case ModuleRotations.XAxisToRightAngles:
+            {
+                return new Quaternion[]
+                {
+                    Quaternion.identity,
+                    Quaternion.Euler(0, 90, 0),
+                    Quaternion.Euler(0, 0, 90),
+                };
+            }
+
+            case ModuleRotations.YAxisToRightAngles:
+            {
+                return new Quaternion[]
+                {
+                    Quaternion.identity,
+                    Quaternion.Euler(90, 0, 0),
+                    Quaternion.Euler(0, 0, 90),
+                };
+            }
+
+
+            case ModuleRotations.ZAxisToRightAngles:
+            {
+                return new Quaternion[]
+                {
+                    Quaternion.identity,
+                    Quaternion.Euler(0, 90, 0),
+                    Quaternion.Euler(90, 0, 0),
+                };
+            }
+
+            case ModuleRotations.XAxisToRightAnglesAndOpposites:
             {
                 return new Quaternion[]
                 {
@@ -50,7 +90,21 @@ public static class ModuleRotationsExtensions
                 };
             }
 
-            case ModuleRotations.PositiveZToSixDirections:
+            case ModuleRotations.YAxisToRightAnglesAndOpposites:
+            {
+                return new Quaternion[]
+                {
+                    Quaternion.identity,
+                    Quaternion.Euler(90, 0, 0),
+                    Quaternion.Euler(180, 0, 0),
+                    Quaternion.Euler(270, 0, 0),
+                    Quaternion.Euler(0, 0, 90),
+                    Quaternion.Euler(0, 0, 270),
+                };
+            }
+
+
+            case ModuleRotations.ZAxisToRightAnglesAndOpposites:
             {
                 return new Quaternion[]
                 {
@@ -118,6 +172,8 @@ public class ModuleCreator : MonoBehaviour
     public ModuleCollection collection;
 
     public float socketVertexDistanceThreshold = 0.001f;
+
+    public GameObject fallbackModule;
 
     [System.Serializable]
     public class Socket
@@ -203,15 +259,51 @@ public class ModuleCreator : MonoBehaviour
         emptyPrototype.name = "empty";
         emptyPrototype.prefabName = null;
         emptyPrototype.priority = -100;
-        emptyPrototype.negX = -2;
-        emptyPrototype.posX = -2;
-        emptyPrototype.negY = -2;
-        emptyPrototype.posY = -2;
-        emptyPrototype.negZ = -2;
-        emptyPrototype.posZ = -2;
+        emptyPrototype.leftSocket = -2;
+        emptyPrototype.rightSocket = -2;
+        emptyPrototype.downSocket = -2;
+        emptyPrototype.upSocket = -2;
+        emptyPrototype.backSocket = -2;
+        emptyPrototype.forwardSocket = -2;
 
         prototypes.Add(emptyPrototype);
+
+        ModulePrototype insideEmptyPrototype = new ModulePrototype();
+        insideEmptyPrototype.name = "inside_empty";
+        insideEmptyPrototype.prefabName = "inside_empty";
+        insideEmptyPrototype.priority = -100;
+        insideEmptyPrototype.leftSocket = -3;
+        insideEmptyPrototype.rightSocket = -3;
+        insideEmptyPrototype.downSocket = -3;
+        insideEmptyPrototype.upSocket = -3;
+        insideEmptyPrototype.backSocket = -3;
+        insideEmptyPrototype.forwardSocket = -3;
+
+        GameObject insideEmptyModuleInstance = Instantiate(fallbackModule, children);
+        insideEmptyModuleInstance.transform.localPosition = new Vector3(insideEmptyModuleInstance.transform.localPosition.x, 0, 0);
+        insideEmptyModuleInstance.name = insideEmptyPrototype.name;
+
+        prototypes.Add(insideEmptyPrototype);
+
+        // ModulePrototype fallbackPrototype = new ModulePrototype();
+        // fallbackPrototype.name = "fallback";
+        // fallbackPrototype.prefabName = "fallback";
+        // fallbackPrototype.priority = int.MinValue;
+        // fallbackPrototype.leftSocket = int.MinValue;
+        // fallbackPrototype.rightSocket = int.MinValue;
+        // fallbackPrototype.downSocket = int.MinValue;
+        // fallbackPrototype.upSocket = int.MinValue;
+        // fallbackPrototype.backSocket = int.MinValue;
+        // fallbackPrototype.forwardSocket = int.MinValue;
         
+        // GameObject fallbackModuleInstance = Instantiate(fallbackModule, children);
+        // fallbackModuleInstance.transform.localPosition = new Vector3(fallbackModuleInstance.transform.localPosition.z, 0, 0);
+        // fallbackModuleInstance.name = fallbackPrototype.name;
+
+        // prototypes.Add(fallbackPrototype);
+
+
+
         List<Socket> xAxisSockets = new List<Socket>();
         List<Socket> yAxisSockets = new List<Socket>();
         List<Socket> zAxisSockets = new List<Socket>();
@@ -223,7 +315,7 @@ public class ModuleCreator : MonoBehaviour
 
             for (int rotationIndex = 0; rotationIndex < rotations.Length; ++rotationIndex)
             {
-                string name = $"{mesh.name}_{rotationIndex}";
+                string name = $"{mesh.name}_{rotationIndex}_{prototypes.Count}";
 
                 // ------------------------------------
 
@@ -272,10 +364,30 @@ public class ModuleCreator : MonoBehaviour
                     HashSet<Vector2> verticesOnBack = new HashSet<Vector2>();
                     HashSet<Vector2> verticesOnForward = new HashSet<Vector2>();
 
+                    bool hasVerticesOnLeftHalf = false;
+                    bool hasVerticesOnRightHalf = false;
+                    bool hasVerticesOnDownHalf = false;
+                    bool hasVerticesOnUpHalf = false;
+                    bool hasVerticesOnBackHalf = false;
+                    bool hasVerticesOnForwardHalf = false;
+
                     foreach(Vector3 _v in vertexPositions)
                     {   
                         // Rotate vertices, since mesh itself is never rotated
                         Vector3 v = rotations[rotationIndex] * _v;
+
+                        // --------------------------------------------------
+
+                        hasVerticesOnLeftHalf = (v.x < 0) || hasVerticesOnLeftHalf;
+                        hasVerticesOnRightHalf = (v.x > 0) || hasVerticesOnRightHalf;
+
+                        hasVerticesOnDownHalf = (v.y < 0) || hasVerticesOnDownHalf;
+                        hasVerticesOnUpHalf = (v.y > 0) || hasVerticesOnUpHalf;
+
+                        hasVerticesOnBackHalf = (v.z < 0) || hasVerticesOnBackHalf;
+                        hasVerticesOnForwardHalf = (v.z > 0) || hasVerticesOnForwardHalf;
+                        
+                        // --------------------------------------------------
 
                         if (Mathf.Abs(bounds.min.x - v.x) < socketVertexDistanceThreshold)
                         {
@@ -324,7 +436,7 @@ public class ModuleCreator : MonoBehaviour
                                 {
                                     matches = true;
                                     uniqueIndex = socketIndex;
-                                    Debug.Log($"Match found {pieceIndex}/{rotationIndex}");
+                                    // Debug.Log($"Match found {pieceIndex}/{rotationIndex}");
                                     break;
                                 }
                             }
@@ -338,14 +450,33 @@ public class ModuleCreator : MonoBehaviour
                         return uniqueIndex;
                     }
 
-                    p.negX = AddUniqueSocket(verticesOnLeft, xAxisSockets);
-                    p.posX = AddUniqueSocket(verticesOnRight, xAxisSockets);
+                    p.leftSocket = AddUniqueSocket(verticesOnLeft, xAxisSockets);
+                    p.rightSocket = AddUniqueSocket(verticesOnRight, xAxisSockets);
 
-                    p.negY = AddUniqueSocket(verticesOnDown, yAxisSockets);
-                    p.posY = AddUniqueSocket(verticesOnUp, yAxisSockets);
+                    p.downSocket = AddUniqueSocket(verticesOnDown, yAxisSockets);
+                    p.upSocket = AddUniqueSocket(verticesOnUp, yAxisSockets);
 
-                    p.negZ = AddUniqueSocket(verticesOnBack, zAxisSockets);
-                    p.posZ = AddUniqueSocket(verticesOnForward, zAxisSockets);
+                    p.backSocket = AddUniqueSocket(verticesOnBack, zAxisSockets);
+                    p.forwardSocket = AddUniqueSocket(verticesOnForward, zAxisSockets);
+
+
+                    int SetIfDetectedInsideEmpty(int socket, bool isDetected)
+                    {
+                        if(socket == -1 && isDetected == false)
+                        {
+                            // todo(Leo): fix magic number
+                            return -3;
+                        }
+                        return socket;
+                    }
+
+                    p.leftSocket = SetIfDetectedInsideEmpty(p.leftSocket, hasVerticesOnLeftHalf);
+                    p.rightSocket = SetIfDetectedInsideEmpty(p.rightSocket, hasVerticesOnRightHalf);
+                    p.downSocket = SetIfDetectedInsideEmpty(p.downSocket, hasVerticesOnDownHalf);
+                    p.upSocket = SetIfDetectedInsideEmpty(p.upSocket, hasVerticesOnUpHalf);
+                    p.backSocket = SetIfDetectedInsideEmpty(p.backSocket, hasVerticesOnBackHalf);
+                    p.forwardSocket = SetIfDetectedInsideEmpty(p.forwardSocket, hasVerticesOnForwardHalf);
+
                 }
 
                 prototypes.Add(p);
@@ -383,27 +514,29 @@ public class ModuleCreator : MonoBehaviour
 
 
             // Note(Leo): create separate lists, that we can add to. They are converted to arrays later
-            List<int>[] compNegX = new List<int>[processedPrototypes.Length];
-            List<int>[] compPosX = new List<int>[processedPrototypes.Length];
-            List<int>[] compNegY = new List<int>[processedPrototypes.Length];
-            List<int>[] compPosY = new List<int>[processedPrototypes.Length];
-            List<int>[] compNegZ = new List<int>[processedPrototypes.Length];
-            List<int>[] compPosZ = new List<int>[processedPrototypes.Length];
+            HashSet<int>[] compLeft = new HashSet<int>[processedPrototypes.Length];
+            HashSet<int>[] compRight = new HashSet<int>[processedPrototypes.Length];
+            HashSet<int>[] compDown = new HashSet<int>[processedPrototypes.Length];
+            HashSet<int>[] compUp = new HashSet<int>[processedPrototypes.Length];
+            HashSet<int>[] compBack = new HashSet<int>[processedPrototypes.Length];
+            HashSet<int>[] compForward = new HashSet<int>[processedPrototypes.Length];
 
             for (int i = 0; i < processedPrototypes.Length; ++i)
             {
-                compNegX[i] = new List<int>();
-                compPosX[i] = new List<int>();
-                compNegY[i] = new List<int>();
-                compPosY[i] = new List<int>();
-                compNegZ[i] = new List<int>();
-                compPosZ[i] = new List<int>();
+                compLeft[i] = new HashSet<int>();
+                compRight[i] = new HashSet<int>();
+                compDown[i] = new HashSet<int>();
+                compUp[i] = new HashSet<int>();
+                compBack[i] = new HashSet<int>();
+                compForward[i] = new HashSet<int>();
             }
 
             bool TestCompatibility(int from, int to)
             { 
+                // Todo(Leo): these are undocumented magic values. They are used only in this class, but pls make proper naming or something
+
                 // Todo(Leo): maybe we want to add priority, and afteer that allow these, but with lowest priority
-                // Empty side to actual empty
+                // Empty OUTside to actual empty
                 if ((from == -1 && to == -2) || (from == -2 && to == -1))
                 {
                     return true;
@@ -413,6 +546,12 @@ public class ModuleCreator : MonoBehaviour
                 if (from == -1 && to == -1)
                 {
                     return false;
+                }
+
+                // This is fallback, it matches with everything
+                if (from == int.MinValue || to == int.MinValue)
+                {
+                    return true;
                 }
 
                 // All else works with these
@@ -425,63 +564,77 @@ public class ModuleCreator : MonoBehaviour
             {
                 for(int to = from; to < processedPrototypes.Length; ++to)
                 {
-                    if (TestCompatibility(storedPrototypes[from].posX, storedPrototypes[to].negX))
+                    // From Right To Left 
+                    if (TestCompatibility(storedPrototypes[from].rightSocket, storedPrototypes[to].leftSocket))
                     {
-                        compPosX[from].Add(to);
-                        compNegX[to].Add(from);
+                        compRight[from].Add(to);
+                        compLeft[to].Add(from);
                     }
 
-                    if (TestCompatibility(storedPrototypes[from].negX, storedPrototypes[to].posX))
+                    // From Left To Right 
+                    if (TestCompatibility(storedPrototypes[from].leftSocket, storedPrototypes[to].rightSocket))
                     {
-                        compNegX[from].Add(to);
-                        compPosX[to].Add(from);
+                        compLeft[from].Add(to);
+                        compRight[to].Add(from);
                     }
 
-                    if (TestCompatibility(storedPrototypes[from].posY, storedPrototypes[to].negY))
+                    // From Up To Down 
+                    if (TestCompatibility(storedPrototypes[from].upSocket, storedPrototypes[to].downSocket))
                     {
-                        compPosY[from].Add(to);
-                        compNegY[to].Add(from);
+                        compUp[from].Add(to);
+                        compDown[to].Add(from);
                     }
 
-                    if (TestCompatibility(storedPrototypes[from].negY, storedPrototypes[to].posY))
+                    // From Down To Up 
+                    if (TestCompatibility(storedPrototypes[from].downSocket, storedPrototypes[to].upSocket))
                     {
-                        compNegY[from].Add(to);
-                        compPosY[to].Add(from);
+                        compDown[from].Add(to);
+                        compUp[to].Add(from);
                     }
 
-                    if (TestCompatibility(storedPrototypes[from].posZ, storedPrototypes[to].negZ))
+                    // From Forward To Back 
+                    if (TestCompatibility(storedPrototypes[from].forwardSocket, storedPrototypes[to].backSocket))
                     {
-                        compPosZ[from].Add(to);
-                        compNegZ[to].Add(from);
+                        compForward[from].Add(to);
+                        compBack[to].Add(from);
                     }
 
-                    if (TestCompatibility(storedPrototypes[from].negZ, storedPrototypes[to].posZ))
+                    // From Back To Forward 
+                    if (TestCompatibility(storedPrototypes[from].backSocket, storedPrototypes[to].forwardSocket))
                     {
-                        compNegZ[from].Add(to);
-                        compPosZ[to].Add(from);
+                        compBack[from].Add(to);
+                        compForward[to].Add(from);
                     }
                 }
             }
 
             for (int i = 0; i < processedPrototypes.Length; ++i)
             {
-                compNegX[i].Sort();
-                processedPrototypes[i].compatibilityLeft = compNegX[i].ToArray();
+                List<int> list;
 
-                compPosX[i].Sort();
-                processedPrototypes[i].compatibilityRight = compPosX[i].ToArray();
+                list = compLeft[i].ToList();
+                list.Sort();
+                processedPrototypes[i].compatibilityLeft = list.ToArray();
 
-                compNegY[i].Sort();
-                processedPrototypes[i].compatibilityDown = compNegY[i].ToArray();
+                list = compRight[i].ToList();
+                list.Sort();
+                processedPrototypes[i].compatibilityRight = list.ToArray();
 
-                compPosX[i].Sort();
-                processedPrototypes[i].compatibilityUp = compPosY[i].ToArray();
+                list = compDown[i].ToList();
+                list.Sort();
+                processedPrototypes[i].compatibilityDown = list.ToArray();
 
-                compNegZ[i].Sort();
-                processedPrototypes[i].compatibilityBack = compNegZ[i].ToArray();
+                list = compUp[i].ToList();
+                list.Sort();
+                processedPrototypes[i].compatibilityUp = list.ToArray();
 
-                compPosZ[i].Sort();
-                processedPrototypes[i].compatibilityForward = compPosZ[i].ToArray();
+                list = compBack[i].ToList();
+                list.Sort();
+                processedPrototypes[i].compatibilityBack = list.ToArray();
+
+                list = compForward[i].ToList();
+                list.Sort();
+                processedPrototypes[i].compatibilityForward = list.ToArray();
             }
 
             collection.modules = processedPrototypes;
