@@ -144,7 +144,7 @@ public class Clicker : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                input.redo = true;
+                input.undo = true;
             }
 
             if (Input.GetKeyDown(KeyCode.Y))

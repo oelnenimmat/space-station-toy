@@ -165,6 +165,8 @@ public static class ModuleRotationsExtensions
     }
 }
 
+#if UNITY_EDITOR
+
 public class ModuleCreator : MonoBehaviour
 {
     public ModuleCreatorSource source;
@@ -650,3 +652,5 @@ public class ModuleCreator : MonoBehaviour
         }
     }
 }
+
+#endif
