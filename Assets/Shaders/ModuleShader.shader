@@ -25,6 +25,7 @@ Shader "Custom/ModuleShader"
         Pass
         {
             Cull Front
+            // ZWrite off 
 
             CGPROGRAM
             #pragma vertex vert

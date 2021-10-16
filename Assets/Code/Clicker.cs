@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class Clicker : MonoBehaviour
 {
+    public MapCellType enabledMapCellType;
+
     public new Camera camera;
     public float rotateSpeed = 1;
     public float scrollSpeed = 1;
@@ -43,6 +45,15 @@ public class Clicker : MonoBehaviour
     public Button undoButton;
     public Button redoButton;
 
+    public Button enableStructurePlacementButton;
+    public Button enableSolarArrayPlacementButton;
+
+    public Button currentEnabledPlacementButton;
+
+    public Color placementEnabledButtonColor;
+    public Color placementDisabledButtonColor;
+    public float placementDisabledButtonScale;
+
     void Awake()
     {
         undoRedo = new UndoRedo(undoStackSize);
@@ -52,6 +63,51 @@ public class Clicker : MonoBehaviour
         #else
             inputSource = new ComputerInput();
         #endif
+
+        void SetEnabled(Button buttonWithImage)
+        {
+            Image image = buttonWithImage.GetComponent<Image>();
+
+            image.color = placementEnabledButtonColor;
+            buttonWithImage.transform.localScale = Vector3.one;
+        }
+
+        void SetDisabled(Button buttonWithImage)
+        {
+            Image image = buttonWithImage.GetComponent<Image>();
+
+            image.color = placementDisabledButtonColor;
+            buttonWithImage.transform.localScale = Vector3.one * placementDisabledButtonScale;
+        }
+
+        enableStructurePlacementButton.onClick.AddListener(() => {
+            SetDisabled(currentEnabledPlacementButton);
+
+            currentEnabledPlacementButton = enableStructurePlacementButton;
+            SetEnabled(currentEnabledPlacementButton);
+
+            enabledMapCellType = MapCellType.Structure;
+
+            soundEffects.Play(soundEffects.ui);
+        });
+
+        enableSolarArrayPlacementButton.onClick.AddListener(() => {
+            SetDisabled(currentEnabledPlacementButton);
+
+            currentEnabledPlacementButton = enableSolarArrayPlacementButton;
+            SetEnabled(currentEnabledPlacementButton);
+
+            enabledMapCellType = MapCellType.Solar;
+
+            soundEffects.Play(soundEffects.ui);
+        });
+
+        SetEnabled(enableStructurePlacementButton);
+        SetDisabled(enableSolarArrayPlacementButton);
+
+        currentEnabledPlacementButton = enableStructurePlacementButton;
+
+        enabledMapCellType = MapCellType.Structure;
     }
     void Start()
     {
@@ -312,6 +368,7 @@ public class Clicker : MonoBehaviour
         bool selected = false;
         Vector3Int selectedCoords = Vector3Int.zero;
         Vector3 selectedNormal = Vector3.zero;
+        MapCellType selectedMapCellType = MapCellType.Structure;
 
         if (input.cursorAvailable)
         {
@@ -329,6 +386,7 @@ public class Clicker : MonoBehaviour
                 selected = true;
                 selectedCoords = coords;
                 selectedNormal = hit.normal;
+                selectedMapCellType = hit.collider.GetComponent<MapCell>().type;
 
             }
             else
@@ -350,10 +408,10 @@ public class Clicker : MonoBehaviour
 
             Assert.AreEqual(direction.magnitude, 1);
 
-            if (map.Add(selectedCoords + direction))
+            if (map.Add(selectedCoords + direction, enabledMapCellType))
             {
                 soundEffects.Play(soundEffects.add);
-                undoRedo.Add(selectedCoords + direction, UndoRedoOperation.Add);
+                undoRedo.Add(selectedCoords + direction, enabledMapCellType, UndoRedoOperation.Add);
             }
             else
             {
@@ -374,11 +432,11 @@ public class Clicker : MonoBehaviour
         }
 
         if (selected && input.clickRemove)
-        {
+        { 
             if (map.Destroy(selectedCoords))
             {
                 soundEffects.Play(soundEffects.remove);
-                undoRedo.Add(selectedCoords, UndoRedoOperation.Remove);
+                undoRedo.Add(selectedCoords, selectedMapCellType, UndoRedoOperation.Remove);
             }
             else
             {
@@ -417,7 +475,7 @@ public class Clicker : MonoBehaviour
                         break;
 
                     case UndoRedoOperation.Remove:
-                        if (map.Add(item.cell))
+                        if (map.Add(item.cell, item.type))
                         {
                             soundEffects.Play(soundEffects.add);
                         }
@@ -437,7 +495,7 @@ public class Clicker : MonoBehaviour
                 switch(item.operation)
                 {
                     case UndoRedoOperation.Add:
-                        if (map.Add(item.cell))
+                        if (map.Add(item.cell, item.type))
                         {
                             soundEffects.Play(soundEffects.add);
                         }

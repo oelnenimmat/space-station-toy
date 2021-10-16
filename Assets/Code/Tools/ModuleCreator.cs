@@ -12,6 +12,10 @@ public class ModulePrototype
     public string prefabName;
     public int priority;
 
+    public bool isTemporaryVisual;
+    public bool includeInStructures;
+    public bool includeInSolarArrays;
+
     public int leftSocket;
     public int rightSocket;
     public int downSocket;
@@ -305,7 +309,6 @@ public class ModuleCreator : MonoBehaviour
         // prototypes.Add(fallbackPrototype);
 
 
-
         List<Socket> xAxisSockets = new List<Socket>();
         List<Socket> yAxisSockets = new List<Socket>();
         List<Socket> zAxisSockets = new List<Socket>();
@@ -341,21 +344,15 @@ public class ModuleCreator : MonoBehaviour
 
                 ModulePrototype p = new ModulePrototype();
 
-                p.name = name;
-                p.prefabName = name;
-                p.priority = pieces[pieceIndex].priority;
+                p.name                  = name;
+                p.prefabName            = name;
+                p.priority              = pieces[pieceIndex].priority;
+                p.isTemporaryVisual     = pieces[pieceIndex].isTemporaryVisual;
+                p.includeInStructures   = pieces[pieceIndex].includeInStructures;
+                p.includeInSolarArrays  = pieces[pieceIndex].includeInSolarArrays;
 
                 Vector3 [] vertexPositions  = mesh.vertices;
                 Bounds bounds               = new Bounds(Vector3.zero, Vector3.one);
-
-                // Todo(Leo): I had idea, that we could this way check if a side was not used and declare that as a back
-                // side, but then we would not get some shapes accurately
-                // Bounds leftBounds           = new Bounds(new Vector3(-0.25f, 0, 0), new Vector3(0.5f, 1, 1));
-                // Bounds rightBounds          = new Bounds(new Vector3(0.25f, 0, 0), new Vector3(0.5f, 1, 1));
-                // Bounds downBounds           = new Bounds(new Vector3(0, -0.25f, 0), new Vector3(1, 0.5f, 1));
-                // Bounds upBounds             = new Bounds(new Vector3(0, 0.25f, 0), new Vector3(1, 0.5f, 1));
-                // Bounds backBounds           = new Bounds(new Vector3(0, 0, -0.25f), new Vector3(1, 1, 0.5f));
-                // Bounds forwardBounds        = new Bounds(new Vector3(0, 0, 0.25f), new Vector3(1, 1, 0.5f));
 
                 // Detect sockets
                 {
@@ -478,7 +475,6 @@ public class ModuleCreator : MonoBehaviour
                     p.upSocket = SetIfDetectedInsideEmpty(p.upSocket, hasVerticesOnUpHalf);
                     p.backSocket = SetIfDetectedInsideEmpty(p.backSocket, hasVerticesOnBackHalf);
                     p.forwardSocket = SetIfDetectedInsideEmpty(p.forwardSocket, hasVerticesOnForwardHalf);
-
                 }
 
                 prototypes.Add(p);
@@ -491,6 +487,7 @@ public class ModuleCreator : MonoBehaviour
         GameObject masterPrefab = PrefabUtility.SaveAsPrefabAsset(children.gameObject, "Assets/prefabs/generated/prototypes.prefab");
 
         // ------------------------------------------------------------
+
 
 
         {
@@ -641,14 +638,39 @@ public class ModuleCreator : MonoBehaviour
 
             collection.modules = processedPrototypes;
 
+            List<int> structureModuleIndices = new List<int>();
+            List<int> solarArrayModuleIndices = new List<int>();
+
             for(int i = 0; i < processedPrototypes.Length; ++i)
             {
                 if (processedPrototypes[i].name.Equals("empty"))
                 {
                     collection.emptyModuleIndex = i;
-                    break;
+                }
+
+                if (processedPrototypes[i].name.Equals("inside_empty"))
+                {
+                    structureModuleIndices.Add(i);
+                }
+
+                if (storedPrototypes[i].isTemporaryVisual)
+                {
+                    collection.temporaryVisualModuleIndex = i;
+                }
+
+                if (storedPrototypes[i].includeInStructures)
+                {
+                    structureModuleIndices.Add(i);
+                }
+
+                if (storedPrototypes[i].includeInSolarArrays)
+                {
+                    solarArrayModuleIndices.Add(i);
                 }
             }
+
+            collection.structureModuleIndices = structureModuleIndices.ToArray();
+            collection.solarArrayModuleIndices = solarArrayModuleIndices.ToArray();
         }
     }
 }

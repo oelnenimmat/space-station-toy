@@ -4,12 +4,14 @@ public enum UndoRedoOperation { Invalid, Add, Remove };
 
 public struct UndoRedoItem
 {
-    public Vector3Int          cell;
-    public UndoRedoOperation   operation;
+    public Vector3Int           cell;
+    public MapCellType          type;
+    public UndoRedoOperation    operation;
 
-    public UndoRedoItem(Vector3Int c, UndoRedoOperation op)
+    public UndoRedoItem(Vector3Int c, MapCellType t, UndoRedoOperation op)
     {
         cell = c;
+        type = t;
         operation = op;
     }
 }
@@ -48,9 +50,9 @@ public class UndoRedo
         return (i + capacity - 1) % capacity;
     }
 
-    public void Add(Vector3Int cell, UndoRedoOperation operation)
+    public void Add(Vector3Int cell, MapCellType type, UndoRedoOperation operation)
     {
-        stack[index]    = new UndoRedoItem(cell, operation);
+        stack[index]    = new UndoRedoItem(cell, type, operation);
         index           = IncrementOne(index);
         current         = Mathf.Min(current + 1, capacity);
         top             = current;

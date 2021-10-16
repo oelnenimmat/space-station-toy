@@ -53,6 +53,15 @@ public struct SpawnInfo
     }
 }
 
+public enum MapCellType { Structure, Solar }
+
+[System.Flags]
+public enum MapCellTypeFlags
+{
+    Structure = 1,
+    Solar = 2,
+}
+
 public class Map : MonoBehaviour
 {
     public ModuleCollection collection;
@@ -64,7 +73,7 @@ public class Map : MonoBehaviour
     public GameObject [,,] tempVisuals;
     public int activeCellCount;
 
-    public int tempVisualModuleIndex;
+    public int tempVisualModuleIndex => collection.temporaryVisualModuleIndex;
 
     public Vector3Int size;
     public Vector3Int startCoord;
@@ -104,7 +113,7 @@ public class Map : MonoBehaviour
         mapCellParent.localPosition = Vector3.zero;
 
         children = new GameObject("children").transform;
-        Add(startCoord);
+        Add(startCoord, MapCellType.Structure);
     }
 
     // Here we only check if thread is done
@@ -203,14 +212,15 @@ public class Map : MonoBehaviour
                     }
                     else
                     {
-                        // Note(Leo): assert this, and then we can omit check for it in the loop :)
-                        Assert.AreEqual(emptyModuleIndex, 0);
-                
-                        // Todo(Leo): build a list of these beforehand and just copy here
-                        superPositions[x,y,z] = new List<int>(modules.Length - 1);
-                        for (int k = 1; k < modules.Length; ++k)
+                        switch(mapCells[x,y,z].GetComponent<MapCell>().type)
                         {
-                            superPositions[x,y,z].Add(k);
+                            case MapCellType.Structure:
+                                superPositions[x,y,z] = new List<int>(collection.structureModuleIndices);
+                                break;
+
+                            case MapCellType.Solar:
+                                superPositions[x,y,z] = new List<int>(collection.solarArrayModuleIndices);
+                                break;
                         }
                     }
                 }
@@ -607,7 +617,7 @@ public class Map : MonoBehaviour
         return spawnList;
     }
 
-    public bool Add(Vector3Int coords)
+    public bool Add(Vector3Int coords, MapCellType type)
     {       
         bool insideSize = coords.x >= 0 && coords.x < size.x 
                             && coords.y >= 0 && coords.y < size.y
@@ -630,7 +640,11 @@ public class Map : MonoBehaviour
         mapCell.transform.SetParent(mapCellParent);
         mapCell.transform.position = coords;
 
-        mapCell.AddComponent<MapCell>().coords = coords;
+        
+        MapCell mapCellComponent = mapCell.AddComponent<MapCell>();
+        mapCellComponent.coords = coords;
+        mapCellComponent.type = type;
+
         mapCell.name = $"map cell {coords}";
 
         BoxCollider collider = mapCell.AddComponent<BoxCollider>();

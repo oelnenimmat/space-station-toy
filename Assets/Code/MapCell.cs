@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapCell : MonoBehaviour
 {
     public Vector3Int coords;
+    public MapCellType type;
 
     private void OnDrawGizmos()
     {
