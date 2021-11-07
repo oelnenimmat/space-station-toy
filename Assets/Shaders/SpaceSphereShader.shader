@@ -7,6 +7,7 @@ Shader "Unlit/SpaceSphereShader"
         _DotScale ("Dot Scale", float) = 1
         _BottomColor("Bottom Color", color) = (0,0,0,0)
         _TopColor("Top Color", color) = (0,0,0,0)
+        _StarsStrength("Stars Strength", float) = 1
     }
     SubShader
     {
@@ -49,6 +50,8 @@ Shader "Unlit/SpaceSphereShader"
             float4 _BottomColor;
             float4 _TopColor;
 
+            float _StarsStrength;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -76,7 +79,7 @@ Shader "Unlit/SpaceSphereShader"
                 float3 starTexture = tex2D(_MainTex, i.uv);
                 float stars = Luminance(starTexture.rgb);
                 // stars = starTexture.r;
-                stars *= 500;
+                stars *= _StarsStrength;
                 // stars = step(0.005, stars);
                 // stars = smoothstep(0.003, 0.008, stars);
                 col.rgb += stars.rrr;

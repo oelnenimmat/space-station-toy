@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 4k_ceres_fictional
-  m_Shader: {fileID: 4800000, guid: a62bf747162277f40ba1ba70fd7578e3, type: 3}
+  m_Shader: {fileID: 4800000, guid: a8eee20258b8e124ca44ae3ffa598a5e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -51,6 +51,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -77,12 +81,15 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TexturePow: 2
+    - _TextureStrength: 0.244
     - _UVOffset: 0
     - _UVScale: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.4509804, g: 0.49019608, b: 0.46956092, a: 1}
     - _EmissionColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
     - _LineColor: {r: 0.4056604, g: 0.14133835, b: 0.12055002, a: 1}
+    - _TextureAltColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

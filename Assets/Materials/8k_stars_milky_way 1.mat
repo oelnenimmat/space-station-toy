@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 8k_stars_milky_way
+  m_Name: 8k_stars_milky_way 1
   m_Shader: {fileID: 4800000, guid: 63448d13b55d70d4183c20cc0107aba0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -31,6 +31,6 @@ Material:
     - _Threshold1: 0.21
     - _Threshold2: 1
     m_Colors:
-    - _BottomColor: {r: 0.11700004, g: 0.025999993, b: 0.325, a: 0}
-    - _TopColor: {r: 0.085326515, g: 0.023061221, b: 0.113000005, a: 0}
+    - _BottomColor: {r: 0.17020772, g: 0.040583827, b: 0.4528302, a: 0}
+    - _TopColor: {r: 0.14537139, g: 0.038399998, b: 0.192, a: 0}
   m_BuildTextureStacks: []

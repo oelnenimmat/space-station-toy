@@ -336,10 +336,6 @@ public class ModuleCreator : MonoBehaviour
                 var renderer = g.AddComponent<MeshRenderer>();
                 renderer.sharedMaterial = pieces[pieceIndex].material;
 
-                // var collider = g.AddComponent<BoxCollider>();
-                // collider.center = Vector3.zero;
-                // collider.size = Vector3.one;
-
                 // ------------------------------------
 
                 ModulePrototype p = new ModulePrototype();

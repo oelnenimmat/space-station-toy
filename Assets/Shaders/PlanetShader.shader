@@ -1,4 +1,4 @@
-Shader "Custom/ModuleShader"
+Shader "Custom/PlanetShader"
 {
     Properties
     {
@@ -10,12 +10,6 @@ Shader "Custom/ModuleShader"
 
         _LineColor ("Line Color", color) = (0,0,0,1)
         _LineScale ("LineScale", Float) = 1
-
-        _AmbientOcclusion3D ("Ambient Occlusion 3D", 3D) = "white" {}
-        _UVScale ("UV scale", float) = 1
-        _UVOffset ("UV offset", float) = 0
-
-        _AOPower("AO Power", range(0,1)) = 0
     }
     SubShader
     {
@@ -88,12 +82,7 @@ Shader "Custom/ModuleShader"
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
-        sampler3D _AmbientOcclusion3D;
 
-        float _UVScale;
-        float _UVOffset;
-
-        float _AOPower;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -117,12 +106,7 @@ Shader "Custom/ModuleShader"
             o.Smoothness = Luminance(colorTexture) * _Glossiness;
             o.Alpha = c.a;
 
-
-            float3 uv3 = (IN.worldPos + _UVOffset) / _UVScale;
-
             // o.Albedo = lerp(float3(1,0,0), float3(0,1,0), tex3D(_AmbientOcclusion3D, uv3).r);
-
-            o.Occlusion = lerp(1, tex3D(_AmbientOcclusion3D, uv3).r, _AOPower);
             // o.Occlusion = clamp(0, 1, length(IN.worldPos) / 5.0);
         }
         ENDCG

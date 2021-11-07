@@ -53,14 +53,20 @@ public struct SpawnInfo
     }
 }
 
-public enum MapCellType { Structure, Solar }
-
-[System.Flags]
-public enum MapCellTypeFlags
-{
-    Structure = 1,
-    Solar = 2,
+public enum MapCellType : int
+{ 
+    Empty       = 0,
+    Structure   = 1,
+    Solar       = 2 
 }
+
+// [System.Flags]
+// public enum MapCellTypeFlags
+// {
+//     Empty       = 0,
+//     Structure   = 1,
+//     Solar       = 2,
+// }
 
 public class Map : MonoBehaviour
 {
@@ -68,9 +74,10 @@ public class Map : MonoBehaviour
     public Module [] modules;
     public int emptyModuleIndex;
 
-    public GameObject [,,] mapCells;
-    public GameObject [,,] visuals;
-    public GameObject [,,] tempVisuals;
+    private MapCellType [,,] mapCellsTypes;
+    private GameObject [,,] mapCells;
+    private GameObject [,,] visuals;
+    private GameObject [,,] tempVisuals;
     public int activeCellCount;
 
     public int tempVisualModuleIndex => collection.temporaryVisualModuleIndex;
@@ -106,7 +113,7 @@ public class Map : MonoBehaviour
         ambientOcclusionTexture = new Texture3D(size.x, size.y, size.z, TextureFormat.RGBA32, false);
     }
 
-    private void Start()
+    public void Begin()
     {
         mapCellParent = new GameObject("mapCellParent").transform;
         mapCellParent.SetParent(transform);
@@ -619,6 +626,12 @@ public class Map : MonoBehaviour
 
     public bool Add(Vector3Int coords, MapCellType type)
     {       
+        // Code Smell(Leo): this case is for internal use only, and no return bool is required
+        if (type == MapCellType.Empty)
+        {
+            return false;
+        }
+
         bool insideSize = coords.x >= 0 && coords.x < size.x 
                             && coords.y >= 0 && coords.y < size.y
                             && coords.z >= 0 && coords.z < size.z;
@@ -723,6 +736,34 @@ public class Map : MonoBehaviour
         return true;
     }
 
+    private void Clear()
+    {
+        for (int z = 0; z < size.z; ++z)
+        {
+            for (int y = 0; y < size.y; ++y)
+            {
+                for (int x = 0; x < size.x; ++x)
+                {
+                    Destroy(mapCells[x,y,z]);
+                    mapCells[x,y,z] = null;
+
+                    if (tempVisuals[x,y,z] != null)
+                    {
+                        Destroy(tempVisuals[x,y,z]);
+                        tempVisuals[x,y,z] = null;
+                    }
+                }
+            }
+        }
+
+
+        // Note(Leo): this is way faster than destroying children individually
+        if (children != null)
+        {
+            Destroy(children.gameObject);
+        }
+    }
+
     private void InstantiateVisuals(List<SpawnInfo> spawnList)
     {
         // Note(Leo): this is way faster than destroying children individually
@@ -790,17 +831,60 @@ public class Map : MonoBehaviour
 
         modulesMaterial.SetTexture("_AmbientOcclusion3D", ambientOcclusionTexture);
     }
-}
 
-public static class MultiDimensionalArrayAccessExtensions
-{
-    public static T Get<T> (this T[,,] array, Vector3Int index)
+    public class MapSaveData
     {
-        return array[index.x, index.y, index.z];
+        public MapCellType [] cells;
     }
 
-    public static void Set<T> (this T[,,] array, Vector3Int index, T value)
+    public MapSaveData GetSavedata()
     {
-        array[index.x, index.y, index.z] = value;
+        int count = size.x * size.y * size.z;
+        MapCellType[] cells = new MapCellType[count];
+        for (int i = 0, z = 0; z < size.z; ++z)
+        {
+            for(int y = 0; y < size.y; ++y)
+            {
+                for (int x = 0; x < size.x; ++x, ++i)
+                {
+                    var cellGameObject = mapCells[x,y,z];
+
+                    cells[i] = cellGameObject != null ?
+                                cellGameObject.GetComponent<MapCell>().type :
+                                MapCellType.Empty;
+                }
+            }
+        }
+
+        var data = new MapSaveData { cells = cells };
+        return data;
+    }
+
+    public void ReadSaveData(MapSaveData data)
+    {
+        Clear();
+
+        for (int i = 0, z = 0; z < size.z; ++z)
+        {
+            for(int y = 0; y < size.y; ++y)
+            {
+                for (int x = 0; x < size.x; ++x, ++i)
+                {
+                    if (data.cells[i] != MapCellType.Empty)
+                    {
+                        Add(new Vector3Int(x,y,z), data.cells[i]);
+                    }
+                }
+            }
+        }
+
+        StartWaveFunctionCollapseInThread();
+    }
+
+
+    public void ClearAndInitialize()
+    {
+        Clear();
+        Begin();
     }
 }

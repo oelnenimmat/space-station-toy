@@ -25,8 +25,8 @@ public class Clicker : MonoBehaviour
     private float cameraAzimuthDelta;
     private float cameraAltitudeDelta;
 
-    private bool dragRotateView;
-    private bool dragMoveView;
+        // private bool dragRotateView;
+        // private bool dragMoveView;
 
     public GameObject highlight;
 
@@ -53,6 +53,21 @@ public class Clicker : MonoBehaviour
     public Color placementEnabledButtonColor;
     public Color placementDisabledButtonColor;
     public float placementDisabledButtonScale;
+
+    public Button saveButton;
+    public Button loadButton;
+    public Button trashButton;
+
+    public bool autoLoadGameOnStart;
+    public bool autoSaveOnAddAndRemove;
+
+    public bool popupVisible => popupGameObject.activeInHierarchy;
+    public bool popupClosedTooRecently;
+    public GameObject popupGameObject;
+    public Button popupDeleteButton;
+    public Button popupCancelButton;
+
+
 
     void Awake()
     {
@@ -108,10 +123,43 @@ public class Clicker : MonoBehaviour
         currentEnabledPlacementButton = enableStructurePlacementButton;
 
         enabledMapCellType = MapCellType.Structure;
+
+        trashButton.onClick.AddListener(() => {
+            popupGameObject.SetActive(true);
+            CancelInputOperations();
+
+            soundEffects.Play(soundEffects.ui);
+        });
+
+        popupCancelButton.onClick.AddListener(() => {
+            popupGameObject.SetActive(false);
+            popupClosedTooRecently = true;
+            CancelInputOperations();
+
+            soundEffects.Play(soundEffects.ui);
+        });
+
+        popupDeleteButton.onClick.AddListener(() => {
+            popupGameObject.SetActive(false);
+            popupClosedTooRecently = true;
+            CancelInputOperations();
+
+            map.ClearAndInitialize();
+
+            soundEffects.Play(soundEffects.ui);
+        });
     }
     void Start()
     {
         transform.position = map.startCoord;
+
+        // Note(Leo): this way we enforce order of execution
+        map.Begin();
+
+        if (autoLoadGameOnStart && System.IO.File.Exists(GetSaveFilePath()))
+        {
+            Load();
+        }
     }
 
     [System.Serializable]
@@ -355,6 +403,17 @@ public class Clicker : MonoBehaviour
 
     void Update()
     {
+        if (popupVisible)
+        {
+            return;
+        }
+
+        if (popupClosedTooRecently)
+        {
+            popupClosedTooRecently = false;
+            return;
+        }
+
         InputValues input = inputSource.GetInput();
         DEBUGInputValues = input;
         {
@@ -417,6 +476,11 @@ public class Clicker : MonoBehaviour
             {
                 soundEffects.Play(soundEffects.error);
             }
+
+            if (autoSaveOnAddAndRemove)
+            {
+                Save();
+            }
         }
 
         if (input.dragRotateView)
@@ -441,6 +505,11 @@ public class Clicker : MonoBehaviour
             else
             {
                 soundEffects.Play(soundEffects.error);
+            }
+
+            if (autoSaveOnAddAndRemove)
+            {
+                Save();
             }
         }
 
@@ -514,5 +583,36 @@ public class Clicker : MonoBehaviour
                 soundEffects.Play(soundEffects.error);
             }
         }
+    }
+
+    private string GetSaveFilePath()
+    {
+        string path = $"{Application.persistentDataPath}/save-file.json";
+
+        return path;
+    }
+
+    private void Save()
+    {
+        var data = map.GetSavedata();
+        var json = JsonUtility.ToJson(data, prettyPrint: true);
+        System.IO.File.WriteAllText(GetSaveFilePath(), json);
+
+        Debug.Log($"Saved to {GetSaveFilePath()}");
+    }
+
+    private void Load()
+    {
+        var json = System.IO.File.ReadAllText(GetSaveFilePath());
+        var data = JsonUtility.FromJson<Map.MapSaveData>(json);
+        map.ReadSaveData(data);
+
+        Debug.Log($"Loaded from {GetSaveFilePath()}");
+    }
+
+    private void CancelInputOperations()
+    {
+        inputSource.dragMoveView = false;
+        inputSource.dragRotateView = false;
     }
 }
