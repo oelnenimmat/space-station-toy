@@ -156,7 +156,7 @@ public class Clicker : MonoBehaviour
         // Note(Leo): this way we enforce order of execution
         map.Begin();
 
-        if (autoLoadGameOnStart && System.IO.File.Exists(GetSaveFilePath()))
+        if (autoLoadGameOnStart)
         {
             Load();
         }
@@ -594,8 +594,10 @@ public class Clicker : MonoBehaviour
 
     private void Save()
     {
-        var data = map.GetSavedata();
-        var json = JsonUtility.ToJson(data, prettyPrint: true);
+
+        var saveData = new GameSaveData(map.GetSavedata());
+
+        var json = JsonUtility.ToJson(saveData, prettyPrint: true);
         System.IO.File.WriteAllText(GetSaveFilePath(), json);
 
         Debug.Log($"Saved to {GetSaveFilePath()}");
@@ -603,11 +605,28 @@ public class Clicker : MonoBehaviour
 
     private void Load()
     {
-        var json = System.IO.File.ReadAllText(GetSaveFilePath());
-        var data = JsonUtility.FromJson<Map.MapSaveData>(json);
-        map.ReadSaveData(data);
+        Debug.Log($"GNÄÄ from {GetSaveFilePath()}");
+        string path             = GetSaveFilePath();
+        bool isOkayToOpenFile   = System.IO.File.Exists(path);
 
-        Debug.Log($"Loaded from {GetSaveFilePath()}");
+        if(isOkayToOpenFile)
+        {
+            var json     = System.IO.File.ReadAllText(path);
+            var saveData = JsonUtility.FromJson<GameSaveData>(json);
+
+            bool isOkayToLoad = saveData.version == GameSaveData.currentVersion;
+            if (isOkayToLoad)
+            {
+                map.ReadSaveData(saveData.mapData);
+                Debug.Log($"Loaded from {GetSaveFilePath()}");
+            }
+            else
+            {
+                Debug.Log("No proper save data");
+            }
+
+        }
+
     }
 
     private void CancelInputOperations()
@@ -615,4 +634,22 @@ public class Clicker : MonoBehaviour
         inputSource.dragMoveView = false;
         inputSource.dragRotateView = false;
     }
+}
+
+
+[System.Serializable]
+public class GameSaveData
+{
+    public const int currentVersion = 1;
+
+    public int version;
+    public Map.MapSaveData mapData;
+
+    public GameSaveData(Map.MapSaveData mapData)
+    {
+        version = currentVersion;
+        this.mapData = mapData;
+    }
+
+    private GameSaveData() {}
 }

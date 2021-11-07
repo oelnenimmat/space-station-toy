@@ -16,6 +16,8 @@ public class ModulePrototype
     public bool includeInStructures;
     public bool includeInSolarArrays;
 
+    public bool allowEmptySocketConnections;
+
     public int leftSocket;
     public int rightSocket;
     public int downSocket;
@@ -24,150 +26,6 @@ public class ModulePrototype
     public int forwardSocket;
 }
 
-public enum ModuleRotations
-{
-    None,
-
-    XAxisToRightAngles,
-    YAxisToRightAngles,
-    ZAxisToRightAngles,
-    
-    XAxisToRightAnglesAndOpposites,
-    YAxisToRightAnglesAndOpposites,
-    ZAxisToRightAnglesAndOpposites,
-    
-    All
-}
-
-public static class ModuleRotationsExtensions
-{
-    public static Quaternion[] GetRotations(this ModuleRotations r)
-    {
-        switch(r)
-        {
-            case ModuleRotations.None:
-            {
-                return new Quaternion[] {Quaternion.identity};
-            }
-
-            case ModuleRotations.XAxisToRightAngles:
-            {
-                return new Quaternion[]
-                {
-                    Quaternion.identity,
-                    Quaternion.Euler(0, 90, 0),
-                    Quaternion.Euler(0, 0, 90),
-                };
-            }
-
-            case ModuleRotations.YAxisToRightAngles:
-            {
-                return new Quaternion[]
-                {
-                    Quaternion.identity,
-                    Quaternion.Euler(90, 0, 0),
-                    Quaternion.Euler(0, 0, 90),
-                };
-            }
-
-
-            case ModuleRotations.ZAxisToRightAngles:
-            {
-                return new Quaternion[]
-                {
-                    Quaternion.identity,
-                    Quaternion.Euler(0, 90, 0),
-                    Quaternion.Euler(90, 0, 0),
-                };
-            }
-
-            case ModuleRotations.XAxisToRightAnglesAndOpposites:
-            {
-                return new Quaternion[]
-                {
-                    Quaternion.identity,
-                    Quaternion.Euler(0, 90, 0),
-                    Quaternion.Euler(0, 180, 0),
-                    Quaternion.Euler(0, 270, 0),
-                    Quaternion.Euler(0, 0, 90),
-                    Quaternion.Euler(0, 0, 270),
-                };
-            }
-
-            case ModuleRotations.YAxisToRightAnglesAndOpposites:
-            {
-                return new Quaternion[]
-                {
-                    Quaternion.identity,
-                    Quaternion.Euler(90, 0, 0),
-                    Quaternion.Euler(180, 0, 0),
-                    Quaternion.Euler(270, 0, 0),
-                    Quaternion.Euler(0, 0, 90),
-                    Quaternion.Euler(0, 0, 270),
-                };
-            }
-
-
-            case ModuleRotations.ZAxisToRightAnglesAndOpposites:
-            {
-                return new Quaternion[]
-                {
-                    Quaternion.identity,
-                    Quaternion.Euler(0, 90, 0),
-                    Quaternion.Euler(0, 180, 0),
-                    Quaternion.Euler(0, 270, 0),
-                    Quaternion.Euler(90, 0, 0),
-                    Quaternion.Euler(270, 0, 0),
-                };
-            }
-
-            case ModuleRotations.All:
-            {
-                return new Quaternion[24]
-                {
-                    // -X up
-                    Quaternion.Euler(0, 0, 270),
-                    Quaternion.Euler(0, 90, 270),
-                    Quaternion.Euler(0, 180, 270),
-                    Quaternion.Euler(0, 270, 270),
-
-                    // +X up
-                    Quaternion.Euler(0, 0, 90),
-                    Quaternion.Euler(0, 90, 90),
-                    Quaternion.Euler(0, 180, 90),
-                    Quaternion.Euler(0, 270, 90),
-
-                    // -Y up
-                    Quaternion.Euler(0, 0, 180),
-                    Quaternion.Euler(0, 90, 180),
-                    Quaternion.Euler(0, 180, 180),
-                    Quaternion.Euler(0, 270, 180),
-
-                    // +Y up
-                    Quaternion.Euler(0, 0, 0),
-                    Quaternion.Euler(0, 90, 0),
-                    Quaternion.Euler(0, 180, 0),
-                    Quaternion.Euler(0, 270, 0),
-
-                    // -Z up
-                    Quaternion.Euler(90, 0, 0),
-                    Quaternion.Euler(90, 90, 0),
-                    Quaternion.Euler(90, 180, 0),
-                    Quaternion.Euler(90, 270, 0),
-
-                    // +Z up
-                    Quaternion.Euler(270, 0, 0),
-                    Quaternion.Euler(270, 90, 0),
-                    Quaternion.Euler(270, 180, 0),
-                    Quaternion.Euler(270, 270, 0),
-                };
-            }
-
-            default:
-                return GetRotations(ModuleRotations.All);
-        }
-    }
-}
 
 #if UNITY_EDITOR
 
@@ -308,7 +166,6 @@ public class ModuleCreator : MonoBehaviour
 
         // prototypes.Add(fallbackPrototype);
 
-
         List<Socket> xAxisSockets = new List<Socket>();
         List<Socket> yAxisSockets = new List<Socket>();
         List<Socket> zAxisSockets = new List<Socket>();
@@ -346,6 +203,7 @@ public class ModuleCreator : MonoBehaviour
                 p.isTemporaryVisual     = pieces[pieceIndex].isTemporaryVisual;
                 p.includeInStructures   = pieces[pieceIndex].includeInStructures;
                 p.includeInSolarArrays  = pieces[pieceIndex].includeInSolarArrays;
+                p.allowEmptySocketConnections = pieces[pieceIndex].allowEmptySocketConnections;
 
                 Vector3 [] vertexPositions  = mesh.vertices;
                 Bounds bounds               = new Bounds(Vector3.zero, Vector3.one);
@@ -493,30 +351,29 @@ public class ModuleCreator : MonoBehaviour
                 prefabDictionary.Add(child.name, child.gameObject);
             }
 
-            var storedPrototypes = prototypes;
-            Module [] processedPrototypes = new Module[storedPrototypes.Count];
-            for (int i = 0; i < processedPrototypes.Length; ++i)
+            Module [] modules = new Module[prototypes.Count];
+            for (int i = 0; i < modules.Length; ++i)
             {
-                processedPrototypes[i]          = new Module();
-                processedPrototypes[i].name     = storedPrototypes[i].name;
-                processedPrototypes[i].priority = storedPrototypes[i].priority;
+                modules[i]          = new Module();
+                modules[i].name     = prototypes[i].name;
+                modules[i].priority = prototypes[i].priority;
 
-                if (string.IsNullOrEmpty(storedPrototypes[i].prefabName) == false)
+                if (string.IsNullOrEmpty(prototypes[i].prefabName) == false)
                 {
-                    processedPrototypes[i].prefab = prefabDictionary[storedPrototypes[i].prefabName];
+                    modules[i].prefab = prefabDictionary[prototypes[i].prefabName];
                 }
             }
 
 
             // Note(Leo): create separate lists, that we can add to. They are converted to arrays later
-            HashSet<int>[] compLeft = new HashSet<int>[processedPrototypes.Length];
-            HashSet<int>[] compRight = new HashSet<int>[processedPrototypes.Length];
-            HashSet<int>[] compDown = new HashSet<int>[processedPrototypes.Length];
-            HashSet<int>[] compUp = new HashSet<int>[processedPrototypes.Length];
-            HashSet<int>[] compBack = new HashSet<int>[processedPrototypes.Length];
-            HashSet<int>[] compForward = new HashSet<int>[processedPrototypes.Length];
+            HashSet<int>[] compLeft = new HashSet<int>[modules.Length];
+            HashSet<int>[] compRight = new HashSet<int>[modules.Length];
+            HashSet<int>[] compDown = new HashSet<int>[modules.Length];
+            HashSet<int>[] compUp = new HashSet<int>[modules.Length];
+            HashSet<int>[] compBack = new HashSet<int>[modules.Length];
+            HashSet<int>[] compForward = new HashSet<int>[modules.Length];
 
-            for (int i = 0; i < processedPrototypes.Length; ++i)
+            for (int i = 0; i < modules.Length; ++i)
             {
                 compLeft[i] = new HashSet<int>();
                 compRight[i] = new HashSet<int>();
@@ -526,11 +383,11 @@ public class ModuleCreator : MonoBehaviour
                 compForward[i] = new HashSet<int>();
             }
 
-            bool TestCompatibility(int from, int to)
+            bool TestCompatibility(int from, int to, bool allowEmptySocketConnections)
             { 
                 // Todo(Leo): these are undocumented magic values. They are used only in this class, but pls make proper naming or something
 
-                // Todo(Leo): maybe we want to add priority, and afteer that allow these, but with lowest priority
+                // Todo(Leo): maybe we want to add priority, and after that allow these, but with lowest priority
                 // Empty OUTside to actual empty
                 if ((from == -1 && to == -2) || (from == -2 && to == -1))
                 {
@@ -540,7 +397,7 @@ public class ModuleCreator : MonoBehaviour
                 // These are actual pieces with empty side
                 if (from == -1 && to == -1)
                 {
-                    return false;
+                    return allowEmptySocketConnections;
                 }
 
                 // This is fallback, it matches with everything
@@ -553,49 +410,51 @@ public class ModuleCreator : MonoBehaviour
                 return from == to;
             }
 
-            // Note(Leo): Either do triangle 2d loop, and add two processedPrototypes in each if,
+            // Note(Leo): Either do triangle 2d loop, and add two modules in each if,
             // or only add one and do square loop
-            for (int from = 0; from < processedPrototypes.Length; ++from)
+            for (int from = 0; from < modules.Length; ++from)
             {
-                for(int to = from; to < processedPrototypes.Length; ++to)
+                for(int to = from; to < modules.Length; ++to)
                 {
+                    bool allowEmptySocketConnections = prototypes[from].allowEmptySocketConnections && prototypes[to].allowEmptySocketConnections;
+
                     // From Right To Left 
-                    if (TestCompatibility(storedPrototypes[from].rightSocket, storedPrototypes[to].leftSocket))
+                    if (TestCompatibility(prototypes[from].rightSocket, prototypes[to].leftSocket, allowEmptySocketConnections))
                     {
                         compRight[from].Add(to);
                         compLeft[to].Add(from);
                     }
 
                     // From Left To Right 
-                    if (TestCompatibility(storedPrototypes[from].leftSocket, storedPrototypes[to].rightSocket))
+                    if (TestCompatibility(prototypes[from].leftSocket, prototypes[to].rightSocket, allowEmptySocketConnections))
                     {
                         compLeft[from].Add(to);
                         compRight[to].Add(from);
                     }
 
                     // From Up To Down 
-                    if (TestCompatibility(storedPrototypes[from].upSocket, storedPrototypes[to].downSocket))
+                    if (TestCompatibility(prototypes[from].upSocket, prototypes[to].downSocket, allowEmptySocketConnections))
                     {
                         compUp[from].Add(to);
                         compDown[to].Add(from);
                     }
 
                     // From Down To Up 
-                    if (TestCompatibility(storedPrototypes[from].downSocket, storedPrototypes[to].upSocket))
+                    if (TestCompatibility(prototypes[from].downSocket, prototypes[to].upSocket, allowEmptySocketConnections))
                     {
                         compDown[from].Add(to);
                         compUp[to].Add(from);
                     }
 
                     // From Forward To Back 
-                    if (TestCompatibility(storedPrototypes[from].forwardSocket, storedPrototypes[to].backSocket))
+                    if (TestCompatibility(prototypes[from].forwardSocket, prototypes[to].backSocket, allowEmptySocketConnections))
                     {
                         compForward[from].Add(to);
                         compBack[to].Add(from);
                     }
 
                     // From Back To Forward 
-                    if (TestCompatibility(storedPrototypes[from].backSocket, storedPrototypes[to].forwardSocket))
+                    if (TestCompatibility(prototypes[from].backSocket, prototypes[to].forwardSocket, allowEmptySocketConnections))
                     {
                         compBack[from].Add(to);
                         compForward[to].Add(from);
@@ -603,63 +462,65 @@ public class ModuleCreator : MonoBehaviour
                 }
             }
 
-            for (int i = 0; i < processedPrototypes.Length; ++i)
+            for (int i = 0; i < modules.Length; ++i)
             {
                 List<int> list;
 
                 list = compLeft[i].ToList();
                 list.Sort();
-                processedPrototypes[i].compatibilityLeft = list.ToArray();
+                modules[i].compatibilityLeft = list.ToArray();
 
                 list = compRight[i].ToList();
                 list.Sort();
-                processedPrototypes[i].compatibilityRight = list.ToArray();
+                modules[i].compatibilityRight = list.ToArray();
 
                 list = compDown[i].ToList();
                 list.Sort();
-                processedPrototypes[i].compatibilityDown = list.ToArray();
+                modules[i].compatibilityDown = list.ToArray();
 
                 list = compUp[i].ToList();
                 list.Sort();
-                processedPrototypes[i].compatibilityUp = list.ToArray();
+                modules[i].compatibilityUp = list.ToArray();
 
                 list = compBack[i].ToList();
                 list.Sort();
-                processedPrototypes[i].compatibilityBack = list.ToArray();
+                modules[i].compatibilityBack = list.ToArray();
 
                 list = compForward[i].ToList();
                 list.Sort();
-                processedPrototypes[i].compatibilityForward = list.ToArray();
+                modules[i].compatibilityForward = list.ToArray();
             }
 
-            collection.modules = processedPrototypes;
+            collection.modules = modules;
 
             List<int> structureModuleIndices = new List<int>();
             List<int> solarArrayModuleIndices = new List<int>();
 
-            for(int i = 0; i < processedPrototypes.Length; ++i)
+            for(int i = 0; i < modules.Length; ++i)
             {
-                if (processedPrototypes[i].name.Equals("empty"))
+                if (modules[i].name.Equals("empty"))
                 {
                     collection.emptyModuleIndex = i;
                 }
 
-                if (processedPrototypes[i].name.Equals("inside_empty"))
+                if (modules[i].name.Equals("inside_empty"))
                 {
                     structureModuleIndices.Add(i);
                 }
 
-                if (storedPrototypes[i].isTemporaryVisual)
+                // -----------------------------------------
+
+                if (prototypes[i].isTemporaryVisual)
                 {
                     collection.temporaryVisualModuleIndex = i;
                 }
 
-                if (storedPrototypes[i].includeInStructures)
+                if (prototypes[i].includeInStructures)
                 {
                     structureModuleIndices.Add(i);
                 }
 
-                if (storedPrototypes[i].includeInSolarArrays)
+                if (prototypes[i].includeInSolarArrays)
                 {
                     solarArrayModuleIndices.Add(i);
                 }

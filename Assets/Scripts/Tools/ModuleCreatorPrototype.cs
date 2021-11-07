@@ -15,6 +15,8 @@ public class ModuleCreatorPrototype : MonoBehaviour
     public bool includeInStructures;
     public bool includeInSolarArrays;
 
+    public bool allowEmptySocketConnections;
+
     public void OnValidate()
     {
         GetComponent<MeshFilter>().sharedMesh = mesh;

@@ -357,6 +357,27 @@ public class Map : MonoBehaviour
         //     return priority;
         // }
 
+        int GetMaxPriorityAtCoord(Vector3Int coords)
+        {
+            List<int> sp = superPositions.Get(coords);
+
+            int maxPriorityModuleIndex = -1;
+            int maxPriority = int.MinValue;
+
+            for(int i = 0; i < sp.Count; ++i)
+            {
+                int moduleIndex = sp[i];
+                int priority = modules[moduleIndex].priority;
+                if (priority >= maxPriority)
+                {
+                    maxPriorityModuleIndex = moduleIndex;
+                    maxPriority = priority;
+                }
+            }
+
+            return maxPriority;
+        }
+
         Vector3Int GetMinEntropyCoords()
         {
             Vector3Int minEntropyCoords = new Vector3Int(0,0,0);
@@ -379,7 +400,18 @@ public class Map : MonoBehaviour
 
                         if (entropy > 1)
                         {
-                            if (entropy < minEntropy)
+                            if (entropy == minEntropy)
+                            {
+                                int maxPriorityAtPreviousMinEntropy = GetMaxPriorityAtCoord(minEntropyCoords);
+                                int maxPriorityAtCurrentCoord = GetMaxPriorityAtCoord(new Vector3Int(x,y,z));
+
+                                if (maxPriorityAtCurrentCoord > maxPriorityAtPreviousMinEntropy)
+                                {
+                                    minEntropy = entropy;
+                                    minEntropyCoords = new Vector3Int(x,y,z);
+                                }
+                            }
+                            else if (entropy < minEntropy)
                             {
                                 minEntropy = entropy;
                                 minEntropyCoords = new Vector3Int(x,y,z);
@@ -832,6 +864,7 @@ public class Map : MonoBehaviour
         modulesMaterial.SetTexture("_AmbientOcclusion3D", ambientOcclusionTexture);
     }
 
+    [System.Serializable]
     public class MapSaveData
     {
         public MapCellType [] cells;
